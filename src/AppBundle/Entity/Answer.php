@@ -39,7 +39,6 @@ class Answer
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="answers")
-     * @Algolia\Attribute()
      */
     private $author;
 
