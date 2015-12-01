@@ -17,7 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret:            ThisTokenIsNotSoSecretChangeIt
-    facebook_app_id:    1709077769378452
-    facebook_app_secret: a3bccbafc47e41054679e792b4cf9208
-    algolia.application_id: 1RBVO1MKKR
-    algolia.api_key: d3826f7f9ae77362a07a69056ca03ab1
+    facebook_app_id:    ~
+    facebook_app_secret: ~
+    algolia.application_id: ~
+    algolia.api_key: ~
