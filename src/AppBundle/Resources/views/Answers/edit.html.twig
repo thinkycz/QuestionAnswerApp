@@ -1,0 +1,41 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    <section class="container content">
+        <div class="row">
+            <div class="col-md-12">
+                <article class="content-box">
+                    <h2 class="text-center">Editace odpovědi</h2>
+                    <form method="post" action="{{ path('updateAnswer', {'id': answer.id}) }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token('storeAnswer') }}">
+                        <fieldset class="form-group">
+                            <textarea name="text" class="tinymce form-control">{{ answer.text }}</textarea>
+                        </fieldset>
+                        <input type="submit" class="btn btn-primary outline" value="Odeslat odpověď">
+                    </form>
+                </article>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/tinymce.min.js') }}"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            skin: "lightgray",
+            elementpath: false,
+            selector: ".tinymce",
+            menubar: false,
+            height: 400,
+            plugins: [
+                "sh4tinymce eqneditor advlist autolink lists link image charmap print preview anchor youtube",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | eqneditor sh4tinymce youtube"
+        });
+    </script>
+{% endblock %}

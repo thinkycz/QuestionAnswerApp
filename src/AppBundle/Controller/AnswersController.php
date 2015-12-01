@@ -4,6 +4,7 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Question;
 use AppBundle\Entity\Answer;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -157,6 +158,58 @@ class AnswersController extends Controller
         return Response::create('success');
     }
 
+    /**
+     * @Route(path="/answer/edit/{id}", name="editAnswer")
+     * @Template()
+     * @param $id
+     * @return array|\Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function editAction($id)
+    {
+        $answer = $this->getDoctrine()->getRepository('AppBundle:Answer')->find($id);
+
+        if(!$answer)
+        {
+            $this->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'Odpověď nebyla nalezena');
+            return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);
+        }
+
+        return compact('answer');
+    }
+
+    /**
+     * @Route(path="/answer/update/{id}", name="updateAnswer")
+     * @Method(methods={"POST"})
+     * @param Request $request
+     * @param $id
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function updateAction(Request $request, $id)
+    {
+        $answer = $this->getDoctrine()->getRepository('AppBundle:Answer')->find($id);
+
+        if(!$answer)
+        {
+            $this->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'Odpověď nebyla nalezena');
+            return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);
+        }
+
+        $newText = $request->get('text');
+
+        if(empty($newText))
+        {
+            $this->get('thinky.appbundle.sweet_alert')->warning('Prázdný text', 'Obsah odpovědi nesmí být prázdný.');
+            return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);
+        }
+
+        $answer->setText($newText);
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($answer);
+        $em->flush();
+
+        $this->get('thinky.appbundle.sweet_alert')->success('Úspěch !', 'Odpověď byla aktualizována.');
+        return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);
+    }
 
     //Private
 

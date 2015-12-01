@@ -18,7 +18,7 @@
                 {% if not child.children.count %}
                 <button class="btn btn-xs btn-danger deleteAnswer" data-id="{{ child.id }}"><span class="glyphicon glyphicon-trash"></span><small> smazat</small></button>
                 {% endif %}
-                <a class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span><small> upravit</small></a>
+                <a href="{{ path('editAnswer', {'id': child.id}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span><small> upravit</small></a>
             </div>
         {% endif %}
     </div>
