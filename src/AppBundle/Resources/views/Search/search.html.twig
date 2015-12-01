@@ -1,0 +1,73 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+
+    <section class="container content">
+        {% if categories %}
+            <div class="row">
+                <div class="content-box col-md-12 inline">
+                    <label>Kategorie: </label>
+                    {% for category in categories %}
+                        <a href="{{ path('showCategory', {'slug': category.slug}) }}" class="btn btn-default">{{ category.name|truncate(15) }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        {% if users %}
+            <div class="row">
+                <div class="content-box col-md-12 inline">
+                    <label>Uživatelé: </label>
+                    {% for user in users %}
+                        <a href="#" class="btn btn-default">{{ user.username|truncate(15) }}</a>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row">
+            {% if answers or questions %}
+                <div class="col-md-6">
+                    <h2 class="text-center">Relevantní otázky</h2>
+                    <hr>
+                    {% for question in questions %}
+                        <div class="content-box search-result">
+                            <h4><a href="{{ path('showQuestion', {'slug': question.slug}) }}">{{ question.title|truncate(50) }}</a></h4>
+                            <p>{{ question.text|truncate(150) }}</p>
+                        </div>
+                    {% else %}
+                        <div class="content-box search-result">
+                            <h3 class="text-center">Žádné výsledky</h3>
+                            <p class="text-center">Ujistěte se prosím, že je zadaný dotaz zadán správně.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div class="col-md-6">
+                    <h2 class="text-center">Relevantní odpovědi</h2>
+                    <hr>
+                    {% for answer in answers %}
+                        <div class="content-box search-result">
+                            <p>{{ answer.text|truncate(150) }}</p>
+                            <a href="{{ path('showQuestion', {'slug': answer.question.slug}) }}" class="btn btn-primary round pull-right">zobrazit otázku <span class="glyphicon glyphicon-arrow-right"></span></a>
+                            <div class="clearfix"></div>
+                        </div>
+                    {% else %}
+                        <div class="content-box search-result">
+                            <h3 class="text-center">Žádné výsledky</h3>
+                            <p class="text-center">Ujistěte se prosím, že je zadaný dotaz zadán správně.</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="col-md-12">
+                    <div class="content-box search-result">
+                        <h3 class="text-center">Bohužel nebyly nalezeny žádné příspěvky</h3>
+                        <p class="text-center">Ujistěte se prosím, že je zadaný dotaz zadán správně.</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </section>
+
+{% endblock %}

@@ -1,0 +1,54 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block body %}
+    <section class="container">
+        <div class="login-box">
+            <h2 class="heading">Registrace</h2>
+            <form method="post" action="{{ path('fos_user_registration_register') }}" class="fos_user_registration_register" id="registrationForm">
+                {{ form_errors(form) }}
+
+                {{ form_widget(form._token) }}
+
+                <div class="form-group">
+                    <label for="fos_user_registration_form_email">Email</label>
+                    <input type="email" id="fos_user_registration_form_email" name="fos_user_registration_form[email]" class="form-control" required>
+                    {{ form_errors(form.email) }}
+                </div>
+                <div class="form-group">
+                    <label for="fos_user_registration_form_username">Přezdívka</label>
+                    <input type="text" id="fos_user_registration_form_username" name="fos_user_registration_form[username]" maxlength="255" pattern=".{2,}" class="form-control" required>
+                    {{ form_errors(form.username) }}
+                </div>
+                <div class="form-group">
+                    <label for="fos_user_registration_form_plainPassword_first">Heslo</label>
+                    <input type="password" id="fos_user_registration_form_plainPassword_first" name="fos_user_registration_form[plainPassword][first]" class="form-control" required>
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+                <div class="form-group">
+                    <label for="fos_user_registration_form_plainPassword_second">Ověření</label>
+                    <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" class="form-control" required>
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+                <div class="recaptcha">
+                    <div class="g-recaptcha" data-sitekey="6Ld0fxETAAAAAByZ39snquJdqDhgXaXF9UMc3mOe"></div>
+                </div>
+                <div>
+                    <input id="_submit" type="submit" value="Zaregistrovat se" class="btn btn-primary sharp form-control" />
+                    <button id="_loader" class="btn btn-primary sharp form-control" style="display: none" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Probíhá registrace...</button>
+                </div>
+            </form>
+
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+    <script>
+        $('#registrationForm').submit(function() {
+            $('#_submit').hide();
+            $('#_loader').show();
+        });
+    </script>
+{% endblock %}

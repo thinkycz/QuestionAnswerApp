@@ -1,0 +1,67 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+    <section class="container content">
+        <div class="row">
+            <div class="col-md-12">
+                <article class="content-box">
+                    <h2 class="text-center">Nový {{ app.user ? '' : 'anonymní ' }}dotaz</h2>
+                    <form method="post" action="{{ path('storeQuestion') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token('storeQuestion') }}">
+                        <fieldset class="form-group">
+                            <label for="title">Titulek</label>
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Zadejte téma tohoto dotazu" value="{{ title }}" required>
+                            <small class="text-muted">Titulek by měl být krátký, výstižný a měl by obsahovat klíčová slova, aby bylo vyhledávání co nejefektivnější.</small>
+                        </fieldset>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <fieldset class="form-group">
+                                    <label for="category">Kategorie</label>
+                                    <select name="category" class="selectpicker form-control">
+                                        <option>Žádná kategorie</option>
+                                        {% for category in categories %}
+                                                <option value="{{ category.id }}" {{ category.id == selectedCategory ? 'selected' : '' }}>{{ category.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                    <small class="text-muted">Vyberte prosím vhodnou kategorii pro váš dotaz</small>
+                                </fieldset>
+                            </div>
+                            <div class="col-md-6">
+                                <fieldset class="form-group">
+                                    <label for="tags">Tagy</label>
+                                    <input type="text" class="form-control" id="tags" name="tags" placeholder="Zadejte max. 5 klíčových slov oddělené mezerou" value="{{ tags }}">
+                                    <small class="text-muted">Nepovinné. Tagy pomáhají lidem vyhledávat dotazy, které mají navzájem přízbuzné téma</small>
+                                </fieldset>
+                            </div>
+                        </div>
+                        <fieldset class="form-group">
+                            <textarea name="text" class="tinymce form-control">{{ text }}</textarea>
+                        </fieldset>
+                        <input type="submit" class="btn btn-primary outline" value="Odeslat příspěvek">
+                    </form>
+                </article>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/tinymce.min.js') }}"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            skin: "lightgray",
+            elementpath: false,
+            selector: ".tinymce",
+            menubar: false,
+            height: 400,
+            plugins: [
+                "sh4tinymce eqneditor advlist autolink lists link image charmap print preview anchor youtube",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | eqneditor sh4tinymce youtube"
+        });
+    </script>
+{% endblock %}

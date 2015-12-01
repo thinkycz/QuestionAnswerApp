@@ -1,0 +1,57 @@
+{% extends "AppBundle::base.html.twig" %}
+
+{% block body %}
+    <section class="container">
+        <div class="login-box">
+            <h2 class="heading">Přihlášení</h2>
+
+            {% if error %}
+                <div class="login-error">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+            {% endif %}
+
+            <div class="oauth-login-box">
+                <button id="_loaderFB" class="btn btn-primary form-control" style="display: none" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Probíhá přihlášení pomocí Facebooku...</button>
+                <a href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook'}) }}" id="_redirectFB" class="btn btn-block btn-social btn-facebook oauth">
+                    <span class="fa fa-facebook"></span> Přihlásit se pomocí služby Facebook
+                </a>
+
+                <span class="center-block text-center">-- nebo klasicky --</span>
+            </div>
+
+            <form action="{{ path("fos_user_security_check") }}" method="post" id="loginForm">
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+
+                <div class="form-group">
+                    <label for="username">Jméno</label>
+                    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label for="password">Heslo</label>
+                    <input type="password" id="password" name="_password" required="required" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                    <label for="remember_me">Zapamatuj si mě</label>
+                </div>
+                <input type="submit" id="_submit" name="_submit" value="Přihlásit se" class="btn btn-primary sharp form-control" />
+                <button id="_loader" class="btn btn-primary sharp form-control" style="display: none" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Probíhá přihlášení...</button>
+                <br><hr>
+                <a href="{{ path('fos_user_registration_register') }}" class="btn btn-info sharp form-control">Založit nový účet</a>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#loginForm').submit(function() {
+            $('#_submit').hide();
+            $('#_loader').show();
+        });
+        $('#_redirectFB').click(function() {
+            $('#_redirectFB').hide();
+            $('#_loaderFB').show();
+        });
+    </script>
+{% endblock %}

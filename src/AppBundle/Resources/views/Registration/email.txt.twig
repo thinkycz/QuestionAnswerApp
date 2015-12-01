@@ -1,0 +1,15 @@
+{% block subject %}
+JustAsk.cz - Potvrzení registrace
+{% endblock %}
+{% block body_text %}
+Ahoj, {{ user.username }} !
+
+Děkujeme, že jsi se rozhodl zaregistrovat se na JustAsk.cz a připojit se k naší komunitě, kde se budeme snažit navzájem si pomáhat.
+
+Pro dokončení registrace prosím klikni na tento odkaz:
+{{ confirmationUrl }}
+
+Ještě jednou díky!
+Tým JustAsk.cz
+{% endblock %}
+{% block body_html %}{% endblock %}

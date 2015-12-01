@@ -1,0 +1,33 @@
+<nav class="text-center">
+    <ul class="pagination">
+        {% if currentPage > 1 %}
+            {% if paginating == 'homepage' %}
+                <li><a href="{{ path(paginating, {'page': 1}) }}" aria-label="První stránka"><span aria-hidden="true">&laquo; První stránka</span></a></li>
+            {% else %}
+                <li><a href="{{ path(paginating, {'page': 1, 'slug': slug}) }}" aria-label="První stránka"><span aria-hidden="true">&laquo; První stránka</span></a></li>
+            {% endif %}
+        {% endif %}
+
+        {% for i in currentPage-5..currentPage+5 %}
+            {% if i >= 1 and i <= totalPages %}
+                {% if currentPage == i %}
+                    <li class="disabled"><a>{{ i }}</a></li>
+                {% else %}
+                    {% if paginating == 'homepage' %}
+                        <li><a href="{{ path(paginating, {'page': i}) }}">{{ i }}</a></li>
+                    {% else %}
+                        <li><a href="{{ path(paginating, {'page': i, 'slug': slug}) }}">{{ i }}</a></li>
+                    {% endif %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% if currentPage < totalPages %}
+            {% if paginating == 'homepage' %}
+                <li><a href="{{ path(paginating, {'page': totalPages}) }}" aria-label="Poslední stránka"><span aria-hidden="true">Poslední stránka &raquo;</span></a></li>
+            {% else %}
+                <li><a href="{{ path(paginating, {'page': totalPages, 'slug': slug}) }}" aria-label="Poslední stránka"><span aria-hidden="true">Poslední stránka &raquo;</span></a></li>
+            {% endif %}
+        {% endif %}
+    </ul>
+</nav>

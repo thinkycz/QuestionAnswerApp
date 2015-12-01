@@ -1,0 +1,131 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+
+    <section class="container content">
+        <div class="row">
+            <div class="content-box col-md-6">
+                <h2 class="heading">Kategorie</h2>
+                <form method="post" action="{{ path('createCategory') }}" class="form-inline">
+                    <label for="name">Vytvořit kategorii: </label>
+                    <input type="text" name="name" class="form-control" style="width: 50%">
+                    <input type="submit" class="form-control btn btn-primary">
+                </form>
+                <br>
+                <ul class="list-group">
+                    {% for category in categories %}
+                        <li class="list-group-item">{{ category.name }}
+                            <span class="pull-right">
+                                <button class="btn btn-warning btn-xs renameCategory" data-id="{{ category.id }}"><span class="glyphicon glyphicon-pencil"></span> přejmenovat</button>
+                                <button class="btn btn-danger btn-xs deleteCategory" data-id="{{ category.id }}"><span class="glyphicon glyphicon-trash"></span> smazat</button>
+                            </span>
+                        </li>
+                    {% else %}
+                        <li class="list-group-item">Žádné kategorie</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div class="content-box col-md-6">
+                <h2 class="heading">Statistiky</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="content-box col-md-12">
+                <h2 class="heading">Seznam uživatelů</h2>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>#ID</th>
+                        <th>Přezdívka</th>
+                        <th>Email</th>
+                        <th>Registrován</th>
+                        <th>Otázek</th>
+                        <th>Odpovědí</th>
+                        <th>Karma</th>
+                        <th>Stav účtu</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <td>{{ user.id }}</td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.createdAt|date('d.m.Y') }}</td>
+                            <td>{{ user.questions.count }}</td>
+                            <td>{{ user.answers.count }}</td>
+                            <td>{{ user.karma }}</td>
+                            <td>{{ user.enabled ? 'aktivní' : 'neaktivní' }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('.renameCategory').click(function() {
+            var id = $(this).attr('data-id');
+            swal({
+                        title: "Přejmenovat",
+                        text: "Zadejte nový název:",
+                        type: "input",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true,
+                        animation: true
+                    },
+                    function(inputValue){
+                        if (inputValue === false) return false;
+                        if (inputValue === "") {
+                            swal.showInputError("Název nesmí být prázdný !");
+                            return false
+                        }
+                        $.ajax({
+                            url: "/admin/category/rename/"+id,
+                            method: "POST",
+                            data: {name: inputValue}
+                        }).success(function() {
+                            swal("Úspěch!", "Kategorie byla přejmenována.", "success");
+                            setTimeout(function(){
+                                $(location).attr('href', "{{ path('adminPanel') }}");
+                            }, 2000);
+                        }).error(function() {
+                            swal("Nastala chyba", "Bohužel se nepodařilo přejmenovat kategorii.", "error");
+                        });
+                    });
+        });
+
+        $('.deleteCategory').click(function() {
+            var id = $(this).attr('data-id');
+            swal({
+                title: "Opravdu smazat?",
+                text: "Po smazání kategorie jí není možné již obnovit!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "/admin/category/delete/"+id,
+                    method: "POST"
+                }).success(function() {
+                    swal("Smazáno!", "Kategorie byla úspěšně smazána.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('adminPanel') }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepodařilo odstranit kategorii.", "error");
+                });
+            });
+        });
+    </script>
+{% endblock %}

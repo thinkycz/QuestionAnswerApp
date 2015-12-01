@@ -1,0 +1,22 @@
+services:
+    thinky.appbundle.sweet_alert:
+        class: AppBundle\Service\SweetAlert
+        arguments: [@service_container]
+
+    thinky.appbundle.logout_handler:
+        class: AppBundle\Service\LogoutHandler
+        arguments: [ @service_container ]
+
+    security.authentication.success_handler:
+        class:  AppBundle\Service\AuthenticationSuccessHandler
+        arguments:  [@security.http_utils, {}, @service_container]
+        tags:
+            - { name: 'monolog.logger', channel: 'security' }
+
+    security.authentication.failure_handler:
+        class: AppBundle\Service\AuthenticationFailureHandler
+        arguments: [ @kernel, @security.http_utils, {}, @?, @service_container ]
+        calls:
+            - [ onAuthenticationFailure, [ @request, @? ] ]
+        tags:
+            - { name: monolog.logger }

@@ -1,0 +1,218 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+
+    <section class="container content">
+        <div class="row">
+            <div class="content-box user-info col-md-12">
+                <div class="col-md-2">
+                    <div class="avatar">
+                        <img src="{{ gravatar(user.email) }}">
+                    </div>
+                    <div class="gravatar">Můj Gravatar</div>
+                </div>
+                <div class="col-md-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">Můj profil</div>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>Jméno</td>
+                                <td>{{ user.username }}</td>
+                            </tr>
+                            <tr>
+                                <td>Email</td>
+                                <td>{{ user.email }}</td>
+                            </tr>
+                            <tr>
+                                <td>Role</td>
+                                <td>
+                                    {% if user.roles[0] == 'ROLE_ADMIN' %}
+                                        správce
+                                    {% elseif user.roles[0] == 'ROLE_MODERATOR' %}
+                                        moderátor
+                                    {% else %}
+                                        uživatel
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Propojení s Facebookem</td>
+                                <td>
+                                    {% if user.facebookId %}
+                                        aktivní
+                                    {% else %}
+                                        neaktivní
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if app.user == user or is_granted('ROLE_ADMIN') %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">Historie</div>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>Poslední přihlášení</td>
+                                    <td>{{ user.lastLogin|date('d.m.Y h:i') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Registrován od</td>
+                                    <td>{{ user.createdAt|date('d.m.Y h:i') }}</td>
+                                </tr>
+                                <tr>
+                                    <td>Účet aktivní</td>
+                                    <td>{{ user.enabled ? 'ano' : 'suspendován' }}</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="col-md-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading text-center">Statistiky</div>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <td>Zeptal jsem se celkem</td>
+                                <td>{{ user.questions.count }}x</td>
+                            </tr>
+                            <tr>
+                                <td>Odpověděl jsem celkem</td>
+                                <td>{{ user.answers.count }}x</td>
+                            </tr>
+                            <tr>
+                                <td>Ostatní mi odpověděli celkem</td>
+                                <td>{{ numberOfAnswersToMyQuestions }}</td>
+                            </tr>
+                            <tr>
+                                <td>Ostatní mi dali celkem hodnocení</td>
+                                <td>{{ user.karma }}</td>
+                            </tr>
+                            <tr>
+                                <td>Vyřešil jsem ostatním problém</td>
+                                <td>#</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    {% if app.user == user or is_granted('ROLE_ADMIN') %}
+                        <div class="panel panel-default">
+                            <div class="panel-heading text-center">Operace s účtem</div>
+                            <table class="table">
+                                <tbody>
+                                <tr>
+                                    <td>Změnit heslo</td>
+                                    <td><button id="changePassword" class="btn btn-warning btn-xs"><span class="glyphicon glyphicon-pencil"></span> chci změnit heslo</button></td>
+                                </tr>
+                                <tr>
+                                    <td>Deaktivace účtu</td>
+                                    <td><button id="deactivateAccount" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span> chci deaktivovat svůj účet</button></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h2 class="text-center">Nedávná aktivita</h2>
+                    <hr>
+                    {% for question in user.questions %}
+                        <div class="content-box search-result">
+                            <h4><a href="{{ path('showQuestion', {'slug': question.slug}) }}">{{ question.title|truncate(50) }}</a></h4>
+                            <p>{{ question.text|raw }}</p>
+                        </div>
+                    {% else %}
+                        <div class="content-box search-result">
+                            <h3 class="text-center">Žádné výsledky</h3>
+                            <p class="text-center">Zdá se, že jsi se ještě na nic nezeptal. Proč to nezkusit?</p>
+                        </div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-6">
+                    <h2 class="text-center">Poslední odpovědi</h2>
+                    <hr>
+                    {% for answer in user.answers %}
+                        <div class="content-box search-result">
+                            <p>{{ answer.text|raw }}</p>
+                            <a href="{{ path('showQuestion', {'slug': answer.question.slug}) }}" class="btn btn-primary round pull-right">zobrazit otázku <span class="glyphicon glyphicon-arrow-right"></span></a>
+                            <div class="clearfix"></div>
+                        </div>
+                    {% else %}
+                        <div class="content-box search-result">
+                            <h3 class="text-center">Žádné výsledky</h3>
+                            <p class="text-center">Zatím jsi neodpověděl na žádnou otázku. Každá pomoc je vítána!</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+{% block javascripts %}
+    {{ parent() }}
+    <script>
+        $('#changePassword').click(function() {
+            swal({
+                        title: "Změna hesla",
+                        text: "Zadejte nové heslo:",
+                        type: "input",
+                        inputType: "password",
+                        showCancelButton: true,
+                        closeOnConfirm: false,
+                        showLoaderOnConfirm: true,
+                        animation: true
+                    },
+                    function(inputValue){
+                        if (inputValue === false) return false;
+                        if (inputValue === "") {
+                            swal.showInputError("Heslo nesmí být prázdné!");
+                            return false
+                        }
+                        $.ajax({
+                            url: "{{ path('changePassword', {'id': user.id}) }}",
+                            method: "POST",
+                            data: {password: inputValue}
+                        }).success(function() {
+                            swal("Úspěch!", "Heslo bylo změněno.", "success");
+                            setTimeout(function(){
+                                $(location).attr('href', "{{ path('showUser', {'id': user.id}) }}");
+                            }, 2000);
+                        }).error(function() {
+                            swal("Nastala chyba", "Bohužel se nepodařilo změnit heslo.", "error");
+                        });
+                    });
+        });
+        $('#deactivateAccount').click(function() {
+            swal({
+                title: "Jste si jisti?",
+                text: "Mrzí nás že chcete odejít. Tato akce je nevratná!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "{{ path('deactivateAccount', {'id': user.id}) }}",
+                    method: "POST"
+                }).success(function() {
+                    swal("Deaktivováno!", "Po odhlášení se již nebudete moci přihlásit.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('showUser', {'id': user.id}) }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepodařilo deaktivovat účet.", "error");
+                });
+            });
+        });
+    </script>
+{% endblock %}

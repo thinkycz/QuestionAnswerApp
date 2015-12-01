@@ -1,0 +1,57 @@
+<div class="answer">
+    <div class="col-md-2">
+        <div class="avatar">
+            <img src="{{ child.author ? gravatar(child.author.email) : gravatar('') }}">
+        </div>
+        <div class="username">{{ child.author ? child.author.username : 'Anonymní' }}</div>
+        <div class="created">
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            {{ child.createdAt|diffForHumans }}
+        </div>
+        {% if app.user == question.author %}
+            <div class="author-actions text-center">
+                <button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-floppy-saved"></span><small> toto vyřešilo můj problém</small></button>
+            </div>
+        {% endif %}
+        {% if app.user == child.author or is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') %}
+            <div class="author-actions text-center">
+                {% if not child.children.count %}
+                <button class="btn btn-xs btn-danger deleteAnswer" data-id="{{ child.id }}"><span class="glyphicon glyphicon-trash"></span><small> smazat</small></button>
+                {% endif %}
+                <a class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span><small> upravit</small></a>
+            </div>
+        {% endif %}
+    </div>
+    <div class="col-md-9">
+        {{ child.text|raw }}
+    </div>
+    <div class="col-md-1">
+        <div class="voting">
+            <form method="post" action="{{ path('upvoteAnswer', {'id': child.id}) }}">
+                <button type="submit" class="btn btn-xs btn-success" {{ not app.user or child.usersVoted.contains(app.user) ? 'disabled' }} title="tato odpověď je užitečná"><span class="glyphicon glyphicon-chevron-up"></span></button>
+            </form>
+            <span class="usefulness">{{ child.useful }}</span>
+            <form method="post" action="{{ path('downvoteAnswer', {'id': child.id}) }}">
+                <button type="submit" class="btn btn-xs btn-danger" {{ not app.user or child.usersVoted.contains(app.user) ? 'disabled' }} title="tato odpověď není užitečná"><span class="glyphicon glyphicon-chevron-down"></span></button>
+            </form>
+            <br>
+            <button class="btn btn-primary btn-xs react" data-value="{{ child.id }}" title="zobrazit formulář pro odpověď"><span class="glyphicon glyphicon-comment"></span> reagovat</button>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div id="reactionbox{{ child.id }}" class="reactionbox">
+        <hr>
+        <form method="post" action="{{ path('storeAnswer', {'questionId': question.id}) }}" class="form-inline text-center">
+            <input type="hidden" name="csrf_token" value="{{ csrf_token('storeAnswer') }}">
+            <input type="hidden" name="parentId" value="{{ child.id }}">
+            <textarea class="form-control" name="text" required></textarea>
+            <input type="submit" class="btn btn-primary">
+        </form>
+    </div>
+    {% for subchild in child.children %}
+        <div class="answer-recursive">
+            {% include 'AppBundle:Partials:answer_recursive.html.twig' with {'child': subchild, 'question': question} only %}
+        </div>
+    {% endfor %}
+</div>
+<div class="clearfix"></div>

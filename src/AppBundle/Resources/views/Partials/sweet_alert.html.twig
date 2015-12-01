@@ -1,0 +1,21 @@
+{% if app.session.flashbag.has('swal.title') %}
+    <script>
+        swal({
+            title: "{{ app.session.flashbag.get('swal.title')|first }}",
+            text: "{{ app.session.flashbag.get('swal.text')|first }}",
+            type: "{{ app.session.flashbag.get('swal.type')|first }}",
+            timer: 2000,
+            showConfirmButton: false
+        });
+    </script>
+{% endif %}
+{% if app.session.flashbag.has('swalm.title') %}
+    <script>
+        swal({
+            title: "{{ app.session.flashbag.get('swalm.title')|first }}",
+            text: "{{ app.session.flashbag.get('swalm.text')|first }}",
+            type: "{{ app.session.flashbag.get('swalm.type')|first }}",
+            confirmButtonText: "{{ app.session.flashbag.get('swalm.btn')|first }}"
+        });
+    </script>
+{% endif %}

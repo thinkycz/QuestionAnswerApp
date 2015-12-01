@@ -1,0 +1,245 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block title %}{{ question.title }} | JustAsk.cz{% endblock %}
+
+{% block body %}
+    <section class="container content">
+        <div class="row">
+            <div class="col-md-12">
+                <article class="question">
+                    <h2 class="text-center question-title">
+                        {{ question.title }}
+                    </h2>
+                    <div class="question-text">{{ question.text|raw }}</div>
+                    <div class="question-infobox">
+                        {% if question.solved %}
+                            <span class="infobox-item solved">
+                                <span class="glyphicon glyphicon-check" aria-hidden="true"></span>
+                                <span>vyřešeno</span>
+                            </span>
+                        {% endif %}
+                        <span class="infobox-item">
+                                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                <span>{{ question.author ? question.author : 'Anonymní' }}</span>
+                        </span>
+                        {% if question.category %}
+                            <span class="infobox-item">
+                                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                                <span>{{ question.category.name|slice(0, 20) }}</span>
+                            </span>
+                        {% endif %}
+                        <span class="infobox-item">
+                            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                            <span>{{ question.createdAt|diffForHumans }}</span>
+                        </span>
+                        <span class="infobox-item">
+                            <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                            <span>{{ question.answers.count }} odpovědí</span>
+                        </span>
+                        <span class="infobox-item">
+                            <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                            <span>{{ question.views }} zobrazení</span>
+                        </span>
+                        {% if question.tags.count %}
+                            <span class="infobox-item">
+                                <span class="glyphicon glyphicon-paperclip" aria-hidden="true"></span>
+                                <span>{{ question.tags|join(', ') }}</span>
+                            </span>
+                        {% endif %}
+                        {% if app.user and (is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') or app.user == question.author) %}
+                            <span class="infobox-item pull-right">
+                                {% if not question.answers.count %}
+                                <a id="deleteQuestion" class="btn btn-danger" title="smazat dotaz"><span class="glyphicon glyphicon-trash"></span></a>
+                                {% endif %}
+                                <a href="{{ path('editQuestion', {'slug': question.slug}) }}" class="btn btn-warning" title="upravit dotaz"><span class="glyphicon glyphicon-pencil"></span></a>
+                                {% if not question.solved %}
+                                    <a id="solveQuestion" class="btn btn-success" title="označit jako vyřešené"><span class="glyphicon glyphicon-check"></span></a>
+                                {% elseif question.solved and (is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR')) %}
+                                    <a id="unsolveQuestion" class="btn btn-primary" title="znova otevřít dotaz"><span class="glyphicon glyphicon-unchecked"></span></a>
+                                {% endif %}
+                            </span>
+                        {% endif %}
+                    </div>
+                </article>
+            </div>
+        </div>
+
+        {% for answer in answers %}
+            <div class="row">
+                <div class="col-md-12">
+                    <article class="content-box">
+                        {% include 'AppBundle:Partials:answer_recursive.html.twig' with {'child': answer, 'question': question} only %}
+                    </article>
+                </div>
+            </div>
+        {% endfor %}
+
+        {% if not question.solved %}
+            <div class="row">
+                <div class="col-md-12">
+                    <article class="content-box">
+                        <form method="post" action="{{ path('storeAnswer', {'questionId': question.id}) }}" id="answerForm">
+                            <input type="hidden" name="csrf_token" value="{{ csrf_token('storeAnswer') }}">
+                            <fieldset class="form-group">
+                                <textarea name="text" class="tinymce form-control"></textarea>
+                            </fieldset>
+                            <input id="_submit" type="submit" class="btn btn-primary outline" value="Odeslat odpověď">
+                            <button id="_loader" class="btn btn-primary outline" style="display: none" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Probíhá odesílání...</button>
+                        </form>
+                    </article>
+                </div>
+            </div>
+        {% endif %}
+
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('js/tinymce.min.js') }}"></script>
+    <script type="text/javascript">
+        tinymce.init({
+            skin: "lightgray",
+            elementpath: false,
+            selector: ".tinymce",
+            menubar: false,
+            height: 400,
+            plugins: [
+                "sh4tinymce eqneditor advlist autolink lists link image charmap print preview anchor youtube",
+                "searchreplace visualblocks code fullscreen",
+                "insertdatetime media table contextmenu paste"
+            ],
+            toolbar: "insertfile undo redo | styleselect | bold italic underline | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | eqneditor sh4tinymce youtube"
+        });
+
+        $('#deleteQuestion').click(function() {
+            swal({
+                title: "Opravdu smazat?",
+                text: "Po smazání příspěvku ho není možné již obnovit!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "{{ path('deleteQuestion', {'slug': question.slug}) }}",
+                    method: "POST"
+                }).success(function() {
+                    swal("Smazáno!", "Příspěvek byl úspěšně smazán.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('home') }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepodařilo příspěvek odstranit. \n\n Info: Je možné mazat pouze příspěvky bez odpovědí.", "error");
+                });
+            });
+        });
+
+        $('#solveQuestion').click(function() {
+            swal({
+                title: "Označit jako vyřešené?",
+                text: "Na vyřešené otázky nelze odpovědět! \n\n Vyřešenou otázku nepůjde už otevřít.",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "{{ path('solveQuestion', {'slug': question.slug}) }}",
+                    method: "POST"
+                }).success(function() {
+                    swal("Skvělé!", "Jsme rádi, že byl problém vyřešen.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepovedlo uzamknout otázku.", "error");
+                });
+            });
+        });
+
+        $('#unsolveQuestion').click(function() {
+            swal({
+                title: "Opravdu odemknout?",
+                text: "Opravdu chcete opět odemknout toto téma?",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "{{ path('unsolveQuestion', {'slug': question.slug}) }}",
+                    method: "POST"
+                }).success(function() {
+                    swal("Úspěch", "Příspěvek byl úspěšně odemknut.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepovedlo odemknout otázku.", "error");
+                });
+            });
+        });
+
+        $('#answerForm').submit(function() {
+            $('#_submit').hide();
+            $('#_loader').show();
+        });
+
+        $('.react').click(function() {
+            var box_id = $(this).attr('data-value');
+            $('#reactionbox'+box_id).slideToggle();
+            var el = $('#reactionbox'+box_id);
+            var elOffset = el.offset().top;
+            var elHeight = el.height();
+            var windowHeight = $(window).height();
+            var offset;
+
+            if (elHeight < windowHeight) {
+                offset = elOffset - ((windowHeight / 2) - (elHeight / 2));
+            }
+            else {
+                offset = elOffset;
+            }
+            var speed = 500;
+            $('html, body').animate({scrollTop:offset}, speed);
+
+        });
+
+        $('.deleteAnswer').click(function() {
+            var id = $(this).attr('data-id');
+            swal({
+                title: "Opravdu smazat?",
+                text: "Po smazání odpovědi ji není možné již obnovit!",
+                type: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "/answer/delete/"+id,
+                    method: "POST"
+                }).success(function() {
+                    swal("Smazáno!", "Odpověď byla úspěšně smazána.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepodařilo odpověď odstranit. \n\n Odpověď lze odstanit pouze pokud není rodičem jiné odpovědi.", "error");
+                });
+            });
+        });
+    </script>
+{% endblock %}

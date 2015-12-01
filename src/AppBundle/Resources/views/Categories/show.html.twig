@@ -1,0 +1,59 @@
+{% extends 'AppBundle::base.html.twig' %}
+
+{% block body %}
+
+    {% include 'AppBundle:Partials:subheader.html.twig' with {'navigationinfo': 'Jste v kategorii > ' ~ currentCategory.name|truncate(80)} %}
+
+    <section class="container content">
+        <div class="row">
+            <div class="col-md-9">
+                {% for question in questions %}
+                    <article class="question">
+                        <div class="question-author col-md-2">
+                            <div class="avatar">
+                                <img src="{{ question.author ? gravatar(question.author.email) : gravatar('') }}">
+                            </div>
+                            <div class="username">{{ question.author ? question.author.username : 'Anonymní' }}</div>
+                        </div>
+                        <div class="question-body col-md-10">
+                            <h2>
+                                <a href="{{ path('showQuestion', {'slug': question.slug}) }}">{{ question.title }}</a>
+                            </h2>
+                            <div class="question-text-short">{{ question.text|raw}}</div>
+                            <div class="question-infobox">
+                                {% if question.category %}
+                                    <span class="infobox-item">
+                                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                                        <span>{{ question.category.name|slice(0, 20) }}</span>
+                                    </span>
+                                {% endif %}
+                                <span class="infobox-item">
+                                    <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                    <span>{{ question.createdAt|diffForHumans }}</span>
+                                </span>
+                                <span class="infobox-item">
+                                    <span class="glyphicon glyphicon-comment" aria-hidden="true"></span>
+                                    <span>{{ question.answers.count }} odpovědí</span>
+                                </span>
+                                <span class="infobox-item">
+                                    <span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span>
+                                    <span>{{ question.views }} zobrazení</span>
+                                </span>
+                                {% if question.solved %}
+                                    <span class="infobox-item pull-right">
+                                    <span class="glyphicon glyphicon-ok solved" aria-hidden="true"></span>
+                                </span>
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                    </article>
+                {% endfor %}
+                {% include 'AppBundle:Partials:pagination.html.twig' with {'paginating': 'showCategory', 'slug': slug} %}
+            </div>
+            <div class="col-md-3">
+                {% include 'AppBundle:Partials:index_sidebar.html.twig' %}
+            </div>
+        </div>
+    </section>
+{% endblock %}

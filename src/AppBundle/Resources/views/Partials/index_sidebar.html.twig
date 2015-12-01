@@ -1,0 +1,73 @@
+{% if app.user %}
+    <div class="widget">
+        <div class="welcomebox">
+            <div class="col-md-3 avatarbox">
+                <img src="{{ gravatar(app.user.email) }}" class="avatar">
+            </div>
+            <div class="col-md-9 namebox">
+                <small>Vítej zpět, </small>
+                <div class="name">{{ app.user.username }}</div>
+                {% if is_granted('ROLE_ADMIN') %}
+                    <small style="color: darkred"><a href="{{ path('adminPanel') }}">(oprávnění správce)</a></small>
+                {% elseif is_granted('ROLE_MODERATOR') %}
+                    <small style="color: darkgreen">(oprávnění moderátora)</small>
+                {% endif %}
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <hr>
+        <ul class="list-group">
+            <li href="#" class="list-group-item">Zeptal jsem se<span class="badge">{{ app.user.questions.count|truncate(5) }}x</span></li>
+            <li href="#" class="list-group-item">Odpověděl jsem<span class="badge">{{ app.user.answers.count|truncate(5) }}x</span></li>
+            <li href="#" class="list-group-item">Moje hodnocení<span class="badge">{{ app.user.karma|truncate(5) }}</span></li>
+        </ul>
+    </div>
+{% endif %}
+<div class="widget">
+    <h3>Kategorie</h3>
+    <ul class="list-group">
+        {% for category in categories %}
+            <a href="{{ path('showCategory', {'slug': category.slug}) }}" class="list-group-item">
+                <span class="label label-default label-pill pull-right"><span class="glyphicon glyphicon-question-sign" aria-hidden="true"></span> {{ category.questions.count|truncate(5) }}</span>
+                {{ category.name|truncate(15) }}
+            </a>
+        {% endfor %}
+    </ul>
+</div>
+<div class="widget">
+    <h3>Statistiky</h3>
+    <div class="stats-box question">
+        <span>{{ totalQuestions }}</span>
+        <span class="stats-description">otázek</span>
+    </div>
+    <div class="stats-box answer">
+        <span>{{ totalAnswers }}</span>
+        <span class="stats-description">odpovědí</span>
+    </div>
+</div>
+<div class="widget">
+    <h3>Oblibené dotazy</h3>
+    <ul class="list-group">
+        {% for favQuestion in favoriteQuestions %}
+            <a href="{{ path('showQuestion', {'slug': favQuestion.slug}) }}" class="list-group-item">
+                <span class="label label-default label-pill pull-right"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> {{ favQuestion.answers.count|truncate(5) }}</span>
+                <strong>{{ favQuestion.author.username|truncate(20) }}</strong>
+                <p class="list-group-item-text">{{ favQuestion.title|truncate(50) }}</p>
+            </a>
+        {% endfor %}
+    </ul>
+</div>
+<div class="widget">
+    <h3>Top přispěvatelé</h3>
+    <ul class="list-group">
+        {% for topUser in topUsers %}
+            <a href="{{ path('showUser', {'id': topUser.id}) }}" class="list-group-item">
+                <span class="label label-default label-pill pull-right"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> {{ topUser.karma|truncate(5) }}</span>
+                <strong>{{ topUser.username|truncate(15) }}</strong>
+            </a>
+        {% endfor %}
+    </ul>
+</div>
+<div class="widget">
+    <h3>Populární tagy</h3>
+</div>

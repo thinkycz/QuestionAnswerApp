@@ -1,0 +1,272 @@
+.background {
+  background-color: #f3f3f3; }
+
+.header {
+  min-height: 86px;
+  position: relative;
+  background-color: #2f3239; }
+
+.logo {
+  float: left;
+  line-height: 86px; }
+
+.navigation {
+  float: right; }
+  .navigation ul {
+    list-style: none;
+    float: right; }
+  .navigation .menu-item {
+    float: left;
+    line-height: 1;
+    position: relative;
+    height: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    margin-top: 25px;
+    margin-right: 5px; }
+    .navigation .menu-item a {
+      padding: 0 15px;
+      color: white;
+      display: block;
+      line-height: 36px;
+      border-radius: 2px;
+      transition: color 0.1s linear, border 0.1s linear, opacity 0.1s linear, background-color 0.1s linear; }
+      .navigation .menu-item a:hover, .navigation .menu-item a.active {
+        background: darkcyan;
+        text-decoration: none; }
+  .navigation form {
+    margin: 25px;
+    float: left; }
+    .navigation form input {
+      min-width: 300px; }
+
+.content {
+  margin-top: 20px;
+  margin-bottom: 20px; }
+  .content .question {
+    box-sizing: border-box;
+    margin-bottom: 30px;
+    padding: 20px;
+    border: 1px solid #dedede;
+    background: #FFF;
+    box-shadow: 0 0 5px #dedede;
+    position: relative; }
+    .content .question .question-title {
+      margin-bottom: 1em; }
+  .content .question-author {
+    margin-top: 20px;
+    float: left; }
+    .content .question-author .avatar {
+      text-align: center; }
+    .content .question-author img {
+      max-width: 100px;
+      max-height: 100px;
+      border-radius: 10%;
+      box-shadow: 0 0 10px gray; }
+    .content .question-author .username {
+      text-align: center;
+      font-weight: bold;
+      margin-top: 10px;
+      overflow: auto; }
+  .content .question-body {
+    float: right; }
+  .content .question-text-short {
+    max-height: 500px;
+    overflow: auto; }
+  .content .question-infobox {
+    border-top: 1px solid #dedede;
+    margin-top: 20px;
+    padding-top: 10px; }
+    .content .question-infobox .infobox-item {
+      margin-right: 1em;
+      font-size: small;
+      font-weight: bold;
+      color: #333; }
+    .content .question-infobox .solved {
+      color: green; }
+    .content .question-infobox .unsolved {
+      color: darkorange; }
+
+.answer .answer-recursive {
+  float: right;
+  width: 98%;
+  margin-top: 1em;
+  padding-top: 1em;
+  border-top: 1px solid #dedede; }
+
+.answer .avatar {
+  text-align: center; }
+  .answer .avatar img {
+    max-width: 50px;
+    max-height: 50px;
+    border-radius: 10%;
+    box-shadow: 0 0 10px gray; }
+
+.answer .username {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px;
+  overflow: auto; }
+
+.answer .created {
+  text-align: center;
+  font-weight: bold;
+  font-size: smaller; }
+
+.answer .voting {
+  text-align: center;
+  margin-top: 0.5em; }
+
+.answer .react {
+  margin-top: -15px;
+  margin-left: -5px; }
+
+.answer .usefulness {
+  font-size: larger;
+  font-weight: bold; }
+
+.widget {
+  margin-bottom: 30px;
+  color: #2f3239;
+  padding: 20px;
+  border: 1px solid #dedede;
+  background: #FFF;
+  box-shadow: 0 0 5px #dedede; }
+  .widget h3 {
+    margin: -20px 0 20px;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 20px 0 10px;
+    border-bottom: 2px solid #dedede;
+    position: relative; }
+  .widget .stats-box {
+    text-align: center;
+    font-size: xx-large;
+    max-width: 80%;
+    padding: 25px 0;
+    box-shadow: 0 0 20px 0 gray;
+    border: none;
+    margin: 0 auto 20px;
+    border-radius: 10px; }
+    .widget .stats-box .stats-description {
+      display: block;
+      font-size: initial; }
+    .widget .stats-box.question {
+      background-color: darkcyan;
+      color: white; }
+    .widget .stats-box.answer {
+      background-color: darkslateblue;
+      color: white; }
+  .widget .avatar {
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    box-shadow: 0 0 10px grey; }
+  .widget .avatarbox {
+    padding: 0;
+    float: right; }
+  .widget .namebox {
+    padding-left: 5px;
+    font-weight: bold; }
+    .widget .namebox .name {
+      font-size: large;
+      overflow: auto; }
+
+.login-box {
+  max-width: 400px;
+  margin: 50px auto;
+  background-color: white;
+  padding: 20px;
+  border: 1px solid lightgray; }
+  .login-box h2 {
+    text-align: center;
+    margin-bottom: 1em; }
+  .login-box .oauth-login-box {
+    margin-bottom: 2em; }
+    .login-box .oauth-login-box > span {
+      font-weight: bold;
+      margin-top: 2em; }
+    .login-box .oauth-login-box .oauth:hover {
+      color: white; }
+  .login-box .login-error {
+    text-align: center;
+    margin-bottom: 1em;
+    color: #cd4640;
+    font-size: medium;
+    font-weight: bold; }
+
+.footer {
+  background-color: #353940;
+  padding: 16px 0;
+  font-size: 12px;
+  line-height: 24px;
+  color: white; }
+  .footer .copyright {
+    float: left; }
+  .footer .links {
+    float: right; }
+
+.recaptcha {
+  width: 304px;
+  margin: 10px auto; }
+
+.content-box {
+  box-sizing: border-box;
+  margin-bottom: 30px;
+  padding: 20px;
+  border: 1px solid #dedede;
+  background: #FFF;
+  box-shadow: 0 0 5px #dedede;
+  position: relative; }
+  .content-box.search-result {
+    margin-bottom: 15px;
+    overflow: auto;
+    max-height: 300px; }
+
+.quick-action {
+  margin-right: 10px; }
+
+.user-info .avatar {
+  margin-top: 2em;
+  text-align: center; }
+  .user-info .avatar img {
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 10%;
+    box-shadow: 0 0 10px gray; }
+
+.user-info .gravatar {
+  text-align: center;
+  font-weight: bold;
+  margin-top: 10px; }
+
+.subheader {
+  min-height: 110px;
+  position: relative;
+  background-color: darkcyan; }
+  .subheader .navigation-info {
+    font-size: x-large;
+    color: white;
+    margin-top: 1.5em; }
+
+.reactionbox {
+  display: none; }
+  .reactionbox textarea {
+    width: 90% !important;
+    resize: vertical; }
+
+.heading {
+  margin-bottom: 1em;
+  text-align: center; }
+  .heading::after {
+    content: '';
+    display: block;
+    width: 80px;
+    height: 5px;
+    background-color: darkcyan;
+    margin: 30px auto; }
+
+.author-actions {
+  margin-top: 10px; }
+
+/*# sourceMappingURL=app.css.map */

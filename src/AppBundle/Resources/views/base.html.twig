@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}JustAsk.cz{% endblock %}</title>
+
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    {% block stylesheets %}
+        <link rel="stylesheet" href="{{ asset('css/all.css') }}">
+        <link href="{{ asset('syntaxhighlighter/styles/shCore.css') }}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('syntaxhighlighter/styles/shThemeDefault.css') }}" rel="stylesheet" type="text/css" />
+    {% endblock %}
+</head>
+<body class="background">
+{{ include('AppBundle:Partials:header.html.twig') }}
+{% block body %}{% endblock %}
+{{ include('AppBundle:Partials:footer.html.twig') }}
+
+{% block javascripts %}
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="{{ asset('js/all.js') }}"></script>
+    {% include 'AppBundle:Partials:syntax_highlighter.html.twig' %}
+    {% include 'AppBundle:Partials:sweet_alert.html.twig' %}
+{% endblock %}
+</body>
+</html>
