@@ -22,7 +22,6 @@ class AppKernel extends Kernel
             new LightSuner\CarbonBundle\CarbonBundle(),
             new HWI\Bundle\OAuthBundle\HWIOAuthBundle(),
             new Ci\RestClientBundle\CiRestClientBundle(),
-            new Algolia\AlgoliaSearchBundle\AlgoliaAlgoliaSearchBundle(),
             new Ornicar\GravatarBundle\OrnicarGravatarBundle(),
         );
 

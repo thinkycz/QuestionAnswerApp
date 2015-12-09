@@ -15,17 +15,15 @@ class SearchController extends Controller
      * @internal param $queryString
      * @param Request $request
      * @return array
-     * @throws \Algolia\AlgoliaSearchBundle\Exception\NotAnAlgoliaEntity
      */
     public function searchAction(Request $request)
     {
         $queryString = $request->get('query_string');
-        $algolia = $this->get('algolia.indexer');
 
-        $categories = $algolia->search($this->getDoctrine()->getEntityManager(), 'AppBundle:Category', $queryString)->getHits();
-        $users = $algolia->search($this->getDoctrine()->getEntityManager(), 'AppBundle:User', $queryString)->getHits();
-        $questions = $algolia->search($this->getDoctrine()->getEntityManager(), 'AppBundle:Question', $queryString)->getHits();
-        $answers = $algolia->search($this->getDoctrine()->getEntityManager(), 'AppBundle:Answer', $queryString)->getHits();
+        $categories = [];
+        $users = [];
+        $questions = [];
+        $answers = [];
 
         return compact('categories', 'users', 'questions', 'answers');
     }

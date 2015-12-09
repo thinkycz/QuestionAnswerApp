@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Algolia\AlgoliaSearchBundle\Mapping\Annotation as Algolia;
 
 /**
  * Answer
@@ -31,7 +30,6 @@ class Answer
      * @var string
      *
      * @ORM\Column(name="text", type="text")
-     * @Algolia\Attribute()
      */
     private $text;
 
@@ -46,7 +44,6 @@ class Answer
      * @var integer
      *
      * @ORM\Column(name="useful", type="integer")
-     * @Algolia\Attribute()
      */
     private $useful = 0;
 
