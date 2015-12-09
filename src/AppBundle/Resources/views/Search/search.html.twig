@@ -33,7 +33,7 @@
                     {% for question in questions %}
                         <div class="content-box search-result">
                             <h4><a href="{{ path('showQuestion', {'slug': question.slug}) }}">{{ question.title|truncate(50) }}</a></h4>
-                            <p>{{ question.text|truncate(150) }}</p>
+                            <p>{{ question.text|raw }}</p>
                         </div>
                     {% else %}
                         <div class="content-box search-result">
@@ -48,7 +48,7 @@
                     <hr>
                     {% for answer in answers %}
                         <div class="content-box search-result">
-                            <p>{{ answer.text|truncate(150) }}</p>
+                            <p>{{ answer.text|raw }}</p>
                             <a href="{{ path('showQuestion', {'slug': answer.question.slug}) }}" class="btn btn-primary round pull-right">zobrazit otázku <span class="glyphicon glyphicon-arrow-right"></span></a>
                             <div class="clearfix"></div>
                         </div>
