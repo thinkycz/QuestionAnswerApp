@@ -11,6 +11,14 @@ use Doctrine\ORM\EntityRepository;
  */
 class QuestionRepository extends EntityRepository
 {
+    public function findQuestionByQueryString($queryString)
+    {
+        return $this->createQueryBuilder('question')
+            ->select('question')
+            ->where('question.title LIKE :string')
+            ->setParameter('string', '%'.$queryString.'%')
+            ->getQuery()->getResult();
+    }
 
     public function count()
     {

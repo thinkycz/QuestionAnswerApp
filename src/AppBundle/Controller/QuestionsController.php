@@ -372,6 +372,12 @@ class QuestionsController extends Controller
             return false;
         }
 
+        if(!preg_match('/[a-zA-Z]/', $request->get('title')))
+        {
+            $this->container->get('thinky.appbundle.sweet_alert')->warning('Prázdný titulek', 'Titulek musí obsahovat alespoň jedno písmeno.');
+            return false;
+        }
+
         if(trim($request->get('text')) == '')
         {
             $this->container->get('thinky.appbundle.sweet_alert')->warning('Prázdný obsah', 'Co je to za otázku, když nemá obsah???');

@@ -20,10 +20,10 @@ class SearchController extends Controller
     {
         $queryString = $request->get('query_string');
 
-        $categories = [];
-        $users = [];
-        $questions = [];
-        $answers = [];
+        $categories = $this->getDoctrine()->getRepository('AppBundle:Category')->findCategoryByQueryString($queryString);
+        $users = $this->getDoctrine()->getRepository('AppBundle:User')->findUserByQueryString($queryString);
+        $questions = $this->getDoctrine()->getRepository('AppBundle:Question')->findQuestionByQueryString($queryString);
+        $answers = $this->getDoctrine()->getRepository('AppBundle:Answer')->findAnswerByQueryString($queryString);
 
         return compact('categories', 'users', 'questions', 'answers');
     }

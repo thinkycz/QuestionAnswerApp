@@ -10,6 +10,15 @@ namespace AppBundle\Entity;
  */
 class AnswerRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findAnswerByQueryString($queryString)
+    {
+        return $this->createQueryBuilder('answer')
+            ->select('answer')
+            ->where('answer.text LIKE :string')
+            ->setParameter('string', '%'.$queryString.'%')
+            ->getQuery()->getResult();
+    }
+
     public function count()
     {
         return $this->createQueryBuilder('answer')

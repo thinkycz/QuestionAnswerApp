@@ -10,6 +10,15 @@ namespace AppBundle\Entity;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findCategoryByQueryString($queryString)
+    {
+        return $this->createQueryBuilder('category')
+            ->select('category')
+            ->where('category.name LIKE :string')
+            ->setParameter('string', '%'.$queryString.'%')
+            ->getQuery()->getResult();
+    }
+
     public function getFirst($countItems)
     {
         return $this->createQueryBuilder('category')

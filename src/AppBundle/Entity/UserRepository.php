@@ -11,6 +11,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class UserRepository extends EntityRepository
 {
+    public function findUserByQueryString($queryString)
+    {
+        return $this->createQueryBuilder('user')
+            ->select('user')
+            ->where('user.username LIKE :string')
+            ->setParameter('string', '%'.$queryString.'%')
+            ->getQuery()->getResult();
+    }
+
     public function getTopXByKarma($maxResults)
     {
         return $this->createQueryBuilder('user')
