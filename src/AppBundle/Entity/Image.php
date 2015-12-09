@@ -50,6 +50,7 @@ class Image
      * @var Question
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question", inversedBy="images")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $question;
 
@@ -57,6 +58,7 @@ class Image
      * @var Answer
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="images")
+     * @ORM\JoinColumn(name="answer_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $answer;
 

@@ -37,6 +37,7 @@ class Answer
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="answers")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $author;
 
@@ -58,6 +59,7 @@ class Answer
      * @var Question
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question", inversedBy="answers")
+     * @ORM\JoinColumn(name="question_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $question;
 
@@ -65,6 +67,7 @@ class Answer
      * @var Answer
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="children")
+     * @ORM\JoinColumn(name="parent_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $parent;
 

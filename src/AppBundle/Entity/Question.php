@@ -72,6 +72,7 @@ class Question
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="questions")
+     * @ORM\JoinColumn(name="author_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $author;
 
@@ -86,6 +87,7 @@ class Question
      * @var Answer
      *
      * @ORM\OneToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="isSelectedIn")
+     * @ORM\JoinColumn(name="answer_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $selectedAnswer;
 
@@ -93,7 +95,7 @@ class Question
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="questions")
-     *
+     * @ORM\JoinColumn(name="category_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $category;
 
@@ -101,7 +103,7 @@ class Question
      * @var ArrayCollection
      *
      * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tag", inversedBy="questions")
-     *
+     * @ORM\JoinColumn(name="tag_id", referencedColumnName="id", onDelete="SET NULL")
      */
     private $tags;
 
