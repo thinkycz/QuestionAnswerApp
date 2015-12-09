@@ -39,7 +39,6 @@ class Answer
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="answers")
-     * @Algolia\Attribute()
      */
     private $author;
 
@@ -54,16 +53,9 @@ class Answer
     /**
      * @var User
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", mappedBy="votedAnswers")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\User", inversedBy="votedAnswers")
      */
     private $usersVoted;
-
-    /**
-     * @var boolean
-     *
-     * @ORM\Column(name="bestAnswer", type="boolean")
-     */
-    private $bestAnswer = false;
 
     /**
      * @var Question
@@ -92,6 +84,13 @@ class Answer
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="answer")
      */
     private $images;
+
+    /**
+     * @var Question
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Question", inversedBy="selectedAnswer")
+     */
+    private $isSelectedIn;
 
     /**
      * Constructor
@@ -158,30 +157,6 @@ class Answer
     public function getUseful()
     {
         return $this->useful;
-    }
-
-    /**
-     * Set bestAnswer
-     *
-     * @param boolean $bestAnswer
-     *
-     * @return Answer
-     */
-    public function setBestAnswer($bestAnswer)
-    {
-        $this->bestAnswer = $bestAnswer;
-
-        return $this;
-    }
-
-    /**
-     * Get bestAnswer
-     *
-     * @return boolean
-     */
-    public function getBestAnswer()
-    {
-        return $this->bestAnswer;
     }
 
     /**
@@ -322,5 +297,39 @@ class Answer
     public function getAuthor()
     {
         return $this->author;
+    }
+
+    /**
+     * Add usersVoted
+     *
+     * @param \AppBundle\Entity\User $usersVoted
+     *
+     * @return Answer
+     */
+    public function addUsersVoted(\AppBundle\Entity\User $usersVoted)
+    {
+        $this->usersVoted[] = $usersVoted;
+
+        return $this;
+    }
+
+    /**
+     * Remove usersVoted
+     *
+     * @param \AppBundle\Entity\User $usersVoted
+     */
+    public function removeUsersVoted(\AppBundle\Entity\User $usersVoted)
+    {
+        $this->usersVoted->removeElement($usersVoted);
+    }
+
+    /**
+     * Get usersVoted
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getUsersVoted()
+    {
+        return $this->usersVoted;
     }
 }

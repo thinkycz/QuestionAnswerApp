@@ -77,7 +77,6 @@ class Question
      * @var User
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User", inversedBy="questions")
-     * @Algolia\Attribute()
      */
     private $author;
 
@@ -87,6 +86,13 @@ class Question
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Answer", mappedBy="question")
      */
     private $answers;
+
+    /**
+     * @var Answer
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Answer", mappedBy="isSelectedIn")
+     */
+    private $selectedAnswer;
 
     /**
      * @var Category
@@ -99,8 +105,7 @@ class Question
     /**
      * @var ArrayCollection
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tag", mappedBy="questions")
-     * @Algolia\Attribute()
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Tag", inversedBy="questions")
      *
      */
     private $tags;
@@ -111,6 +116,8 @@ class Question
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="question")
      */
     private $images;
+
+
     /**
      * Constructor
      */

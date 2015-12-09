@@ -88,6 +88,13 @@ class Question
     private $answers;
 
     /**
+     * @var Answer
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Answer", inversedBy="isSelectedIn")
+     */
+    private $selectedAnswer;
+
+    /**
      * @var Category
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Category", inversedBy="questions")
@@ -423,5 +430,29 @@ class Question
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * Set selectedAnswer
+     *
+     * @param \AppBundle\Entity\Answer $selectedAnswer
+     *
+     * @return Question
+     */
+    public function setSelectedAnswer(\AppBundle\Entity\Answer $selectedAnswer = null)
+    {
+        $this->selectedAnswer = $selectedAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Get selectedAnswer
+     *
+     * @return \AppBundle\Entity\Answer
+     */
+    public function getSelectedAnswer()
+    {
+        return $this->selectedAnswer;
     }
 }

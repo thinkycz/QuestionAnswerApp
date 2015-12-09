@@ -10,4 +10,14 @@ namespace AppBundle\Entity;
  */
 class TagRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getTopXByQuestionCount($maxResults)
+    {
+        return $this->createQueryBuilder('tag')
+            ->select('tag, count(questions.id) as hidden cnt')
+            ->innerJoin('tag.questions', 'questions')
+            ->orderBy('cnt', 'DESC')
+            ->groupBy('tag')
+            ->setMaxResults($maxResults)
+            ->getQuery()->getResult();
+    }
 }

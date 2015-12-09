@@ -56,4 +56,21 @@ class AnswerRepository extends \Doctrine\ORM\EntityRepository
             ->setParameter('user', $user)
             ->getQuery()->getSingleScalarResult();
     }
+
+    public function getNumberOfUsersAnswersThatAreSelected($user)
+    {
+        return $this->createQueryBuilder('answer')
+            ->select('count(answer)')
+            ->innerJoin('answer.isSelectedIn', 'question')
+            ->where(
+                $this->getEntityManager()->getExpressionBuilder()
+                    ->eq('answer.author', ':user')
+            )
+            ->andWhere(
+                $this->getEntityManager()->getExpressionBuilder()
+                ->isNotNull('question.id')
+            )
+            ->setParameter('user', $user)
+            ->getQuery()->getSingleScalarResult();
+    }
 }

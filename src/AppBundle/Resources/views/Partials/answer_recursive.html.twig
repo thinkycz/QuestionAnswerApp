@@ -10,12 +10,12 @@
         </div>
         {% if app.user == question.author %}
             <div class="author-actions text-center">
-                <button class="btn btn-xs btn-success"><span class="glyphicon glyphicon-floppy-saved"></span><small> toto vyřešilo můj problém</small></button>
+                <button class="btn btn-xs btn-success selectAnswer" data-id="{{ child.id }}" {{ child == question.selectedAnswer ? 'disabled' }}><span class="glyphicon glyphicon-ok"></span><small> toto vyřešilo můj problém</small></button>
             </div>
         {% endif %}
         {% if app.user == child.author or is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') %}
             <div class="author-actions text-center">
-                {% if not child.children.count %}
+                {% if not child.children.count and not child.isSelectedIn %}
                 <button class="btn btn-xs btn-danger deleteAnswer" data-id="{{ child.id }}"><span class="glyphicon glyphicon-trash"></span><small> smazat</small></button>
                 {% endif %}
                 <a href="{{ path('editAnswer', {'id': child.id}) }}" class="btn btn-xs btn-warning"><span class="glyphicon glyphicon-pencil"></span><small> upravit</small></a>

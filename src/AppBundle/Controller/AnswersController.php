@@ -71,6 +71,7 @@ class AnswersController extends Controller
         try
         {
             $answer = $this->getDoctrine()->getRepository('AppBundle:Answer')->find($id);
+            $author = $answer->getAuthor();
 
             if(!$this->getUser())
             {
@@ -86,8 +87,10 @@ class AnswersController extends Controller
 
             $answer->setUseful($answer->getUseful() + 1);
             $answer->addUsersVoted($this->getUser());
+            $author->setKarma($author->getKarma() + 1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($answer);
+            $em->persist($author);
             $em->flush();
             $this->container->get('thinky.appbundle.sweet_alert')->success('Úspěch !', 'Tvůj hlas byl úspěšně zaregistrován.');
             return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);
@@ -108,6 +111,7 @@ class AnswersController extends Controller
         try
         {
             $answer = $this->getDoctrine()->getRepository('AppBundle:Answer')->find($id);
+            $author = $answer->getAuthor();
 
             if(!$this->getUser())
             {
@@ -123,8 +127,10 @@ class AnswersController extends Controller
 
             $answer->setUseful($answer->getUseful() - 1);
             $answer->addUsersVoted($this->getUser());
+            $author->setKarma($author->getKarma() - 1);
             $em = $this->getDoctrine()->getManager();
             $em->persist($answer);
+            $em->persist($author);
             $em->flush();
             $this->container->get('thinky.appbundle.sweet_alert')->success('Úspěch !', 'Tvůj hlas byl úspěšně zaregistrován.');
             return $this->redirectToRoute('showQuestion', ['slug' => $answer->getQuestion()->getSlug()]);

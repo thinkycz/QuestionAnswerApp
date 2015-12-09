@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-md-12">
                 <article class="content-box">
-                    <h2 class="text-center">Editace odpovědi</h2>
+                    <h2 class="heading">Editace odpovědi</h2>
                     <form method="post" action="{{ path('updateAnswer', {'id': answer.id}) }}">
                         <input type="hidden" name="csrf_token" value="{{ csrf_token('storeAnswer') }}">
                         <fieldset class="form-group">

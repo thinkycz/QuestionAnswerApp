@@ -69,7 +69,7 @@ class User extends BaseUser implements UserInterface
     /**
      * @var Answer
      *
-     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer", inversedBy="usersVoted")
+     * @ORM\ManyToMany(targetEntity="AppBundle\Entity\Answer", mappedBy="usersVoted")
      */
     private $votedAnswers;
 
@@ -211,5 +211,39 @@ class User extends BaseUser implements UserInterface
     public function getAnswers()
     {
         return $this->answers;
+    }
+
+    /**
+     * Add votedAnswer
+     *
+     * @param \AppBundle\Entity\Answer $votedAnswer
+     *
+     * @return User
+     */
+    public function addVotedAnswer(\AppBundle\Entity\Answer $votedAnswer)
+    {
+        $this->votedAnswers[] = $votedAnswer;
+
+        return $this;
+    }
+
+    /**
+     * Remove votedAnswer
+     *
+     * @param \AppBundle\Entity\Answer $votedAnswer
+     */
+    public function removeVotedAnswer(\AppBundle\Entity\Answer $votedAnswer)
+    {
+        $this->votedAnswers->removeElement($votedAnswer);
+    }
+
+    /**
+     * Get votedAnswers
+     *
+     * @return \Doctrine\Common\Collections\Collection
+     */
+    public function getVotedAnswers()
+    {
+        return $this->votedAnswers;
     }
 }

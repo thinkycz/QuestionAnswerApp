@@ -14,10 +14,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
+use Symfony\Component\HttpFoundation\Response;
 
 class QuestionsController extends Controller
 {
     /**
+     * Shows an index page
+     * The second route is used for pagination
+     *
      * @Route("/", name="home")
      * @Route("/page/{page}", name="homepage", defaults={"page" = 1})
      * @Template()
@@ -36,15 +40,18 @@ class QuestionsController extends Controller
         $categories = $this->getDoctrine()->getRepository(Category::class)->getFirst(8);
         $favoriteQuestions = $this->getDoctrine()->getRepository(Question::class)->getTopXByAnswerCount(8);
         $topUsers = $this->getDoctrine()->getRepository(User::class)->getTopXByKarma(8);
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->getTopXByQuestionCount(50);
 
         //Page requests
         $totalPages = ceil($totalQuestions/$articlesOnOnePage);
         $questions = $this->getDoctrine()->getRepository(Question::class)->getOnePage($currentPage, $articlesOnOnePage);
 
-        return compact('questions', 'totalPages', 'currentPage', 'totalQuestions', 'totalAnswers', 'categories', 'favoriteQuestions', 'topUsers');
+        return compact('questions', 'totalPages', 'currentPage', 'totalQuestions', 'totalAnswers', 'categories', 'favoriteQuestions', 'topUsers', 'tags');
     }
 
     /**
+     * Shows a single question
+     *
      * @param $slug
      *
      * @Route(path="/question/show/{slug}", name="showQuestion")
@@ -53,6 +60,7 @@ class QuestionsController extends Controller
      */
     public function showAction($slug)
     {
+        /** @var Question $question */
         $question = $this->getDoctrine()->getRepository('AppBundle:Question')->getQuestionBySlug($slug);
         $answers = $this->getDoctrine()->getRepository('AppBundle:Answer')->getDirectAnswersToQuestion($question);
 
@@ -65,6 +73,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Shows a form to create a new question
+     *
      * @Route(path="/question/create", name="createQuestion")
      * @Template()
      * @param Request $request
@@ -82,6 +92,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Shows a form with existing values to edit the question
+     *
      * @Route(path="/question/edit/{slug}", name="editQuestion")
      * @Template()
      * @param $slug
@@ -105,6 +117,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Listens to POST request, checks that the form is valid and stores data
+     *
      * @Route(path="/question/store", name="storeQuestion")
      * @Method(methods={"POST"})
      * @param Request $request
@@ -148,6 +162,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Listens to POST request, checks that the form is valid and updates data
+     *
      * @Route(path="/question/update/{slug}", name="updateQuestion")
      * @Method(methods={"POST"})
      * @param Request $request
@@ -196,6 +212,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Listens to POST request to delete a question
+     *
      * @Route(path="/question/delete/{slug}", name="deleteQuestion")
      * @Method(methods={"POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -227,6 +245,8 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Checks conditions and marks the question as solved
+     *
      * @Route(path="/question/solve/{slug}", name="solveQuestion")
      * @Method(methods={"POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -240,7 +260,7 @@ class QuestionsController extends Controller
 
             if(!$this->getUser() or ($question->getAuthor() != $this->getUser() and !$security->isGranted('ROLE_ADMIN') and !$security->isGranted('ROLE_MODERATOR')))
             {
-                $this->container->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'K editaci tohoto příspěvku nemáte oprávnění.');
+                $this->container->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'K uzamčení tohoto příspěvku nemáte oprávnění.');
                 return $this->redirectToRoute('showQuestion', ['slug' => $slug]);
             }
 
@@ -259,6 +279,9 @@ class QuestionsController extends Controller
     }
 
     /**
+     * Checks conditions and opens the question
+     * Only ROLE_ADMIN or ROLE_MODERATOR should be able to open the question
+     *
      * @Route(path="/question/unsolve/{slug}", name="unsolveQuestion")
      * @Method(methods={"POST"})
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
@@ -272,7 +295,7 @@ class QuestionsController extends Controller
 
             if(!$this->getUser() or (!$security->isGranted('ROLE_ADMIN') and !$security->isGranted('ROLE_MODERATOR')))
             {
-                $this->container->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'K editaci tohoto příspěvku nemáte oprávnění.');
+                $this->container->get('thinky.appbundle.sweet_alert')->error('Nastala chyba', 'K odemčení tohoto příspěvku nemáte oprávnění.');
                 return $this->redirectToRoute('showQuestion', ['slug' => $slug]);
             }
 
@@ -290,8 +313,51 @@ class QuestionsController extends Controller
         return $this->redirectToRoute('showQuestion', compact('slug'));
     }
 
+    /**
+     * Selects an answer as the solution to the question
+     *
+     * @Route(path="/question/selectAnswer/{slug}", name="selectAnswer")
+     * @Method(methods={"POST"})
+     * @param Request $request
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
+    public function selectAnswer(Request $request, $slug)
+    {
+        try
+        {
+            /** @var Question $question */
+            $question = $this->getDoctrine()->getRepository('AppBundle:Question')->getQuestionBySlug($slug);
+            $answer = $this->getDoctrine()->getRepository('AppBundle:Answer')->find($request->get('id'));
+            $security = $this->get('security.authorization_checker');
+
+            if(!$this->getUser() or ($question->getAuthor() != $this->getUser() and !$security->isGranted('ROLE_ADMIN') and !$security->isGranted('ROLE_MODERATOR')))
+                return Response::create('unauthorized', 401);
+
+            if(!$question or !$answer)
+                return Response::create('not found', 404);
+
+            $question->setSelectedAnswer($answer);
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($question);
+            $em->flush();
+            return Response::create('success');
+        }
+        catch(Exception $e)
+        {
+            return Response::create('error', 400);
+        }
+    }
+
     //Private
 
+    /**
+     * Validates the form against CSRF
+     * Checks if the mandatory fields are empty
+     *
+     * @param Request $request
+     * @return bool
+     */
     private function validateInputForm(Request $request)
     {
         if(!$this->get('form.csrf_provider')->isCsrfTokenValid('storeQuestion', $request->get('csrf_token')))
@@ -315,11 +381,29 @@ class QuestionsController extends Controller
         return true;
     }
 
+    /**
+     * Redirects the user back to the create editor with existing data
+     * when the input was invalid
+     *
+     * @param $title
+     * @param $text
+     * @param $selectedCategory
+     * @param $tags
+     * @return \Symfony\Component\HttpFoundation\RedirectResponse
+     */
     private function redirectBackToEditor($title, $text, $selectedCategory, $tags)
     {
         return $this->redirectToRoute('createQuestion', compact('title', 'text', 'selectedCategory', 'tags'));
     }
 
+    /**
+     * Removes all invalid characters from tags
+     * Divides tags by spaces
+     * Adds new or existing tags to the question
+     *
+     * @param $string
+     * @param Question $question
+     */
     private function processTags($string, Question $question)
     {
         $string = preg_replace("/[^a-zA-Z0-9]/", " ", $string);

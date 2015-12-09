@@ -28,8 +28,9 @@ class UsersController extends Controller
         }
 
         $numberOfAnswersToMyQuestions = $this->getDoctrine()->getRepository('AppBundle:Answer')->getNumberOfAnswersToUsersQuestions($user);
+        $numberOfMyAnswersThatAreSelected = $this->getDoctrine()->getRepository('AppBundle:Answer')->getNumberOfUsersAnswersThatAreSelected($user);
 
-        return compact('user', 'numberOfAnswersToMyQuestions');
+        return compact('user', 'numberOfAnswersToMyQuestions', 'numberOfMyAnswersThatAreSelected');
     }
 
     /**

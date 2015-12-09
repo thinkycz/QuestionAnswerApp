@@ -58,13 +58,6 @@ class Answer
     private $usersVoted;
 
     /**
-     * @var boolean
-     *
-     * @ORM\Column(name="bestAnswer", type="boolean")
-     */
-    private $bestAnswer = false;
-
-    /**
      * @var Question
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Question", inversedBy="answers")
@@ -91,6 +84,13 @@ class Answer
      * @ORM\OneToMany(targetEntity="AppBundle\Entity\Image", mappedBy="answer")
      */
     private $images;
+
+    /**
+     * @var Question
+     *
+     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Question", mappedBy="selectedAnswer")
+     */
+    private $isSelectedIn;
 
     /**
      * Constructor
@@ -157,30 +157,6 @@ class Answer
     public function getUseful()
     {
         return $this->useful;
-    }
-
-    /**
-     * Set bestAnswer
-     *
-     * @param boolean $bestAnswer
-     *
-     * @return Answer
-     */
-    public function setBestAnswer($bestAnswer)
-    {
-        $this->bestAnswer = $bestAnswer;
-
-        return $this;
-    }
-
-    /**
-     * Get bestAnswer
-     *
-     * @return boolean
-     */
-    public function getBestAnswer()
-    {
-        return $this->bestAnswer;
     }
 
     /**
@@ -355,5 +331,29 @@ class Answer
     public function getUsersVoted()
     {
         return $this->usersVoted;
+    }
+
+    /**
+     * Set isSelectedIn
+     *
+     * @param \AppBundle\Entity\Question $isSelectedIn
+     *
+     * @return Answer
+     */
+    public function setIsSelectedIn(\AppBundle\Entity\Question $isSelectedIn = null)
+    {
+        $this->isSelectedIn = $isSelectedIn;
+
+        return $this;
+    }
+
+    /**
+     * Get isSelectedIn
+     *
+     * @return \AppBundle\Entity\Question
+     */
+    public function getIsSelectedIn()
+    {
+        return $this->isSelectedIn;
     }
 }

@@ -7,10 +7,32 @@
         <div class="row">
             <div class="col-md-12">
                 <article class="question">
-                    <h2 class="text-center question-title">
+                    <h2 class="heading">
                         {{ question.title }}
                     </h2>
                     <div class="question-text">{{ question.text|raw }}</div>
+                    {% if question.selectedAnswer %}
+                        <div class="selectedAnswer">
+                            <hr>
+                            <h4 class="text-center">Tato odpověď mi pomohla</h4>
+                            <div class="answer">
+                                <div class="col-md-2">
+                                    <div class="avatar">
+                                        <img src="{{ question.selectedAnswer.author ? gravatar(question.selectedAnswer.author.email) : gravatar('') }}">
+                                    </div>
+                                    <div class="username">{{ question.selectedAnswer.author ? question.selectedAnswer.author.username : 'Anonymní' }}</div>
+                                    <div class="created">
+                                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                                        {{ question.selectedAnswer.createdAt|diffForHumans }}
+                                    </div>
+                                </div>
+                                <div class="col-md-10">
+                                    {{ question.selectedAnswer.text|raw }}
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                        </div>
+                    {% endif %}
                     <div class="question-infobox">
                         {% if question.solved %}
                             <span class="infobox-item solved">
@@ -49,17 +71,18 @@
                         {% if app.user and (is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR') or app.user == question.author) %}
                             <span class="infobox-item pull-right">
                                 {% if not question.answers.count %}
-                                <a id="deleteQuestion" class="btn btn-danger" title="smazat dotaz"><span class="glyphicon glyphicon-trash"></span></a>
+                                    <a id="deleteQuestion" class="btn btn-danger" title="smazat dotaz"><span class="glyphicon glyphicon-trash"></span></a>
                                 {% endif %}
                                 <a href="{{ path('editQuestion', {'slug': question.slug}) }}" class="btn btn-warning" title="upravit dotaz"><span class="glyphicon glyphicon-pencil"></span></a>
                                 {% if not question.solved %}
-                                    <a id="solveQuestion" class="btn btn-success" title="označit jako vyřešené"><span class="glyphicon glyphicon-check"></span></a>
+                                    <a id="solveQuestion" class="btn btn-success" title="označit jako vyřešené"><span class="glyphicon glyphicon-lock"></span></a>
                                 {% elseif question.solved and (is_granted('ROLE_ADMIN') or is_granted('ROLE_MODERATOR')) %}
                                     <a id="unsolveQuestion" class="btn btn-primary" title="znova otevřít dotaz"><span class="glyphicon glyphicon-unchecked"></span></a>
                                 {% endif %}
                             </span>
                         {% endif %}
                     </div>
+
                 </article>
             </div>
         </div>
@@ -140,8 +163,8 @@
 
         $('#solveQuestion').click(function() {
             swal({
-                title: "Označit jako vyřešené?",
-                text: "Na vyřešené otázky nelze odpovědět! \n\n Vyřešenou otázku nepůjde už otevřít.",
+                title: "Chcete uzamknout toto téma?",
+                text: "Na uzamčené téma nelze přidávat další odpovědi. \n\n Uzamčená témata jsou evidována jako vyřešená.",
                 type: "info",
                 showCancelButton: true,
                 confirmButtonColor: "#DD6B55",
@@ -154,7 +177,7 @@
                     url: "{{ path('solveQuestion', {'slug': question.slug}) }}",
                     method: "POST"
                 }).success(function() {
-                    swal("Skvělé!", "Jsme rádi, že byl problém vyřešen.", "success");
+                    swal("Skvělé !", "Jsme rádi, že byl problém vyřešen.", "success");
                     setTimeout(function(){
                         $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
                     }, 2000);
@@ -237,7 +260,35 @@
                         $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
                     }, 2000);
                 }).error(function() {
-                    swal("Nastala chyba", "Bohužel se nepodařilo odpověď odstranit. \n\n Odpověď lze odstanit pouze pokud není rodičem jiné odpovědi.", "error");
+                    swal("Nastala chyba", "Bohužel se nepodařilo odpověď odstranit. \n\n Odpověď lze odstranit pouze pokud není rodičem jiné odpovědi.", "error");
+                });
+            });
+        });
+
+        $('.selectAnswer').click(function() {
+            var id = $(this).attr('data-id');
+            swal({
+                title: "Vybrat tuto odpověď?",
+                text: "Vybraná odpověď se zobrazí pod otázkou tazatele.",
+                type: "info",
+                showCancelButton: true,
+                confirmButtonColor: "#DD6B55",
+                confirmButtonText: "Ano, jsem si jist!",
+                cancelButtonText: "Rozmyslel jsem si to",
+                showLoaderOnConfirm: true,
+                closeOnConfirm: false
+            }, function(){
+                $.ajax({
+                    url: "{{ path('selectAnswer', {'slug': question.slug}) }}",
+                    method: "POST",
+                    data: {'id': id}
+                }).success(function() {
+                    swal("Skvělé !", "Jsme rádi, že byl problém vyřešen.", "success");
+                    setTimeout(function(){
+                        $(location).attr('href', "{{ path('showQuestion', {'slug': question.slug}) }}");
+                    }, 2000);
+                }).error(function() {
+                    swal("Nastala chyba", "Bohužel se nepovedlo uzamknout otázku.", "error");
                 });
             });
         });
