@@ -1,5 +1,9 @@
 # To get started with security, check out the documentation:
 # http://symfony.com/doc/current/book/security.html
+framework:
+    csrf_protection:
+        enabled:  true
+
 security:
     encoders:
         FOS\UserBundle\Model\UserInterface: bcrypt
@@ -21,7 +25,6 @@ security:
             pattern: ^/
             form_login:
                 provider: fos_userbundle
-                csrf_provider: security.csrf.token_manager
             oauth:
                 resource_owners:
                     facebook:           "/login/check-facebook"

@@ -65,7 +65,7 @@ class QuestionsController extends Controller
         $answers = $this->getDoctrine()->getRepository('AppBundle:Answer')->getDirectAnswersToQuestion($question);
 
         $question->setViews($question->getViews()+1);
-        $em = $this->getDoctrine()->getEntityManager();
+        $em = $this->getDoctrine()->getManager();
         $em->persist($question);
         $em->flush();
 

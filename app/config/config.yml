@@ -111,8 +111,7 @@ hwi_oauth:
     #and also, the connecting part (get the token and the user_id)
     connect:
         account_connector: oauth_user_provider
-    # name of the firewall in which this bundle is active, this setting MUST be set
-    firewall_name: main
+    firewall_names: [main]
     fosub:
         username_iterations: 30
         properties:

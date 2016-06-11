@@ -14,7 +14,8 @@ namespace AppBundle\Controller;
 use HWI\Bundle\OAuthBundle\OAuth\ResourceOwnerInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\Authentication\Token\OAuthToken;
 use HWI\Bundle\OAuthBundle\Security\Core\Exception\AccountNotLinkedException;
-use Symfony\Component\DependencyInjection\ContainerAware;
+use Symfony\Component\DependencyInjection\ContainerAwareInterface;
+use Symfony\Component\DependencyInjection\ContainerAwareTrait;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,8 +34,10 @@ use Symfony\Component\Routing\Annotation\Route;
  *
  * @author Alexander <iam.asm89@gmail.com>
  */
-class ConnectController extends ContainerAware
+class ConnectController implements ContainerAwareInterface
 {
+    
+    use ContainerAwareTrait;
     /**
      * Action that handles the login 'form'. If connecting is enabled the
      * user will be redirected to the appropriate login urls or registration forms.
