@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <container xmlns="http://symfony.com/schema/dic/services" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
   <parameters>
-    <parameter key="kernel.root_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/app</parameter>
+    <parameter key="kernel.root_dir">/Users/thinky/code/justask/app</parameter>
     <parameter key="kernel.environment">dev</parameter>
     <parameter key="kernel.debug">true</parameter>
     <parameter key="kernel.name">app</parameter>
-    <parameter key="kernel.cache_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev</parameter>
-    <parameter key="kernel.logs_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/logs</parameter>
+    <parameter key="kernel.cache_dir">/Users/thinky/code/justask/var/cache/dev</parameter>
+    <parameter key="kernel.logs_dir">/Users/thinky/code/justask/var/logs</parameter>
     <parameter key="kernel.bundles" type="collection">
       <parameter key="FrameworkBundle">Symfony\Bundle\FrameworkBundle\FrameworkBundle</parameter>
       <parameter key="SecurityBundle">Symfony\Bundle\SecurityBundle\SecurityBundle</parameter>
@@ -32,10 +32,10 @@
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">appDevDebugProjectContainer</parameter>
     <parameter key="database_host">127.0.0.1</parameter>
-    <parameter key="database_port">8889</parameter>
+    <parameter key="database_port">null</parameter>
     <parameter key="database_name">question_answer</parameter>
     <parameter key="database_user">root</parameter>
-    <parameter key="database_password">root</parameter>
+    <parameter key="database_password">null</parameter>
     <parameter key="mailer_transport">sendmail</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">null</parameter>
@@ -59,7 +59,7 @@
       <parameter key="cookie_httponly">true</parameter>
       <parameter key="gc_probability">1</parameter>
     </parameter>
-    <parameter key="session.save_path">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/sessions</parameter>
+    <parameter key="session.save_path">/Users/thinky/code/justask/var/cache/dev/sessions</parameter>
     <parameter key="session.metadata.update_threshold">0</parameter>
     <parameter key="form.type_extension.csrf.enabled">true</parameter>
     <parameter key="form.type_extension.csrf.field_name">_token</parameter>
@@ -73,24 +73,24 @@
     <parameter key="translator.logging">true</parameter>
     <parameter key="profiler_listener.only_exceptions">false</parameter>
     <parameter key="profiler_listener.only_master_requests">false</parameter>
-    <parameter key="profiler.storage.dsn">file:/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/profiler</parameter>
+    <parameter key="profiler.storage.dsn">file:/Users/thinky/code/justask/var/cache/dev/profiler</parameter>
     <parameter key="router.options.generator_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</parameter>
     <parameter key="router.options.generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</parameter>
     <parameter key="router.options.matcher_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</parameter>
     <parameter key="router.options.matcher_base_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</parameter>
     <parameter key="router.options.matcher_dumper_class">Symfony\Component\Routing\Matcher\Dumper\PhpMatcherDumper</parameter>
-    <parameter key="router.options.matcher.cache_class">appDevUrlMatcher</parameter>
-    <parameter key="router.options.generator.cache_class">appDevUrlGenerator</parameter>
+    <parameter key="router.options.matcher.cache_class">appDevDebugProjectContainerUrlMatcher</parameter>
+    <parameter key="router.options.generator.cache_class">appDevDebugProjectContainerUrlGenerator</parameter>
     <parameter key="router.request_context.host">localhost</parameter>
     <parameter key="router.request_context.scheme">http</parameter>
     <parameter key="router.request_context.base_url"></parameter>
-    <parameter key="router.resource">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/assetic/routing.yml</parameter>
-    <parameter key="router.cache_class_prefix">appDev</parameter>
+    <parameter key="router.resource">/Users/thinky/code/justask/var/cache/dev/assetic/routing.yml</parameter>
+    <parameter key="router.cache_class_prefix">appDevDebugProjectContainer</parameter>
     <parameter key="request_listener.http_port">80</parameter>
     <parameter key="request_listener.https_port">443</parameter>
     <parameter key="debug.error_handler.throw_at">-1</parameter>
-    <parameter key="debug.container.dump">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/appDevDebugProjectContainer.xml</parameter>
+    <parameter key="debug.container.dump">/Users/thinky/code/justask/var/cache/dev/appDevDebugProjectContainer.xml</parameter>
     <parameter key="security.authentication.trust_resolver.anonymous_class">Symfony\Component\Security\Core\Authentication\Token\AnonymousToken</parameter>
     <parameter key="security.authentication.trust_resolver.rememberme_class">Symfony\Component\Security\Core\Authentication\Token\RememberMeToken</parameter>
     <parameter key="security.role_hierarchy.roles" type="collection">
@@ -196,7 +196,8 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">null</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
-    <parameter key="swiftmailer.spool.default.memory.path">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/swiftmailer/spool/default</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.local_domain">null</parameter>
+    <parameter key="swiftmailer.spool.default.memory.path">/Users/thinky/code/justask/var/cache/dev/swiftmailer/spool/default</parameter>
     <parameter key="swiftmailer.mailer.default.spool.enabled">true</parameter>
     <parameter key="swiftmailer.mailer.default.plugin.impersonate">null</parameter>
     <parameter key="swiftmailer.mailer.default.single_address">null</parameter>
@@ -221,7 +222,7 @@
     <parameter key="assetic.worker.cache_busting.class">Assetic\Factory\Worker\CacheBustingWorker</parameter>
     <parameter key="assetic.value_supplier.class">Symfony\Bundle\AsseticBundle\DefaultValueSupplier</parameter>
     <parameter key="assetic.node.paths" type="collection"/>
-    <parameter key="assetic.cache_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/assetic</parameter>
+    <parameter key="assetic.cache_dir">/Users/thinky/code/justask/var/cache/dev/assetic</parameter>
     <parameter key="assetic.bundles" type="collection"/>
     <parameter key="assetic.twig_extension.class">Symfony\Bundle\AsseticBundle\Twig\AsseticExtension</parameter>
     <parameter key="assetic.twig_formula_loader.class">Assetic\Extension\Twig\TwigFormulaLoader</parameter>
@@ -231,8 +232,8 @@
     <parameter key="assetic.debug">true</parameter>
     <parameter key="assetic.use_controller">true</parameter>
     <parameter key="assetic.enable_profiler">false</parameter>
-    <parameter key="assetic.read_from">/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/../web</parameter>
-    <parameter key="assetic.write_to">/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/../web</parameter>
+    <parameter key="assetic.read_from">/Users/thinky/code/justask/app/../web</parameter>
+    <parameter key="assetic.write_to">/Users/thinky/code/justask/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
     <parameter key="assetic.node.bin">/usr/bin/node</parameter>
@@ -353,7 +354,7 @@
     <parameter key="doctrine.orm.second_level_cache.cache_configuration.class">Doctrine\ORM\Cache\CacheConfiguration</parameter>
     <parameter key="doctrine.orm.second_level_cache.regions_configuration.class">Doctrine\ORM\Cache\RegionsConfiguration</parameter>
     <parameter key="doctrine.orm.auto_generate_proxy_classes">true</parameter>
-    <parameter key="doctrine.orm.proxy_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/doctrine/orm/Proxies</parameter>
+    <parameter key="doctrine.orm.proxy_dir">/Users/thinky/code/justask/var/cache/dev/doctrine/orm/Proxies</parameter>
     <parameter key="doctrine.orm.proxy_namespace">Proxies</parameter>
     <parameter key="sensio_framework_extra.view.guesser.class">Sensio\Bundle\FrameworkExtraBundle\Templating\TemplateGuesser</parameter>
     <parameter key="sensio_framework_extra.controller.listener.class">Sensio\Bundle\FrameworkExtraBundle\EventListener\ControllerListener</parameter>
@@ -429,6 +430,8 @@
     <parameter key="stof_doctrine_extensions.listener.uploadable.class">Gedmo\Uploadable\UploadableListener</parameter>
     <parameter key="stof_doctrine_extensions.listener.reference_integrity.class">Gedmo\ReferenceIntegrity\ReferenceIntegrityListener</parameter>
     <parameter key="carbon.converter.carbon.class">LightSuner\CarbonBundle\Request\ParamConverter\CarbonParamConverter</parameter>
+    <parameter key="carbon.form_extension.carbon_date.class">LightSuner\CarbonBundle\Form\Extension\CarbonDateExtension</parameter>
+    <parameter key="carbon.form_extension.carbon_datetime.class">LightSuner\CarbonBundle\Form\Extension\CarbonDateTimeExtension</parameter>
     <parameter key="hwi_oauth.authentication.listener.oauth.class">HWI\Bundle\OAuthBundle\Security\Http\Firewall\OAuthListener</parameter>
     <parameter key="hwi_oauth.authentication.provider.oauth.class">HWI\Bundle\OAuthBundle\Security\Core\Authentication\Provider\OAuthProvider</parameter>
     <parameter key="hwi_oauth.authentication.entry_point.oauth.class">HWI\Bundle\OAuthBundle\Security\Http\EntryPoint\OAuthEntryPoint</parameter>
@@ -439,6 +442,7 @@
     <parameter key="hwi_oauth.resource_owner.oauth1.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\GenericOAuth1ResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.oauth2.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\GenericOAuth2ResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.amazon.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\AmazonResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.asana.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\AsanaResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.auth0.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\Auth0ResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.azure.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\AzureResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.bitbucket.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\BitbucketResourceOwner</parameter>
@@ -446,6 +450,7 @@
     <parameter key="hwi_oauth.resource_owner.bitly.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\BitlyResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.box.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\BoxResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.bufferapp.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\BufferAppResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.clever.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\CleverResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.dailymotion.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\DailymotionResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.deviantart.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\DeviantartResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.deezer.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\DeezerResourceOwner</parameter>
@@ -463,9 +468,11 @@
     <parameter key="hwi_oauth.resource_owner.youtube.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\YoutubeResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.hubic.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\HubicResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.instagram.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\InstagramResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.jawbone.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\JawboneResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.jira.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\JiraResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.linkedin.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\LinkedinResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.mailru.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\MailRuResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.office365.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\Office365ResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.paypal.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\PaypalResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.qq.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\QQResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.reddit.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\RedditResourceOwner</parameter>
@@ -488,11 +495,13 @@
     <parameter key="hwi_oauth.resource_owner.wechat.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\WechatResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.windows_live.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\WindowsLiveResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.wordpress.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\WordpressResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.wunderlist.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\WunderlistResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.xing.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\XingResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.yahoo.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\YahooResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.yandex.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\YandexResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.odnoklassniki.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\OdnoklassnikiResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_owner.37signals.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\ThirtySevenSignalsResourceOwner</parameter>
+    <parameter key="hwi_oauth.resource_owner.itembase.class">HWI\Bundle\OAuthBundle\OAuth\ResourceOwner\ItembaseResourceOwner</parameter>
     <parameter key="hwi_oauth.resource_ownermap.class">HWI\Bundle\OAuthBundle\Security\Http\ResourceOwnerMap</parameter>
     <parameter key="hwi_oauth.security.oauth_utils.class">HWI\Bundle\OAuthBundle\Security\OAuthUtils</parameter>
     <parameter key="hwi_oauth.storage.session.class">HWI\Bundle\OAuthBundle\OAuth\RequestDataStorage\SessionStorage</parameter>
@@ -601,7 +610,7 @@
       </parameter>
     </parameter>
     <parameter key="console.command.ids" type="collection">
-      <parameter>console.command.sensiolabs_security_command_securitycheckercommand</parameter>
+      <parameter>sensio_distribution.security_checker.command</parameter>
     </parameter>
   </parameters>
   <services>
@@ -636,6 +645,9 @@
       <argument type="service" id="translator"/>
       <argument type="service" id="request_stack"/>
     </service>
+    <service id="validate_request_listener" class="Symfony\Component\HttpKernel\EventListener\ValidateRequestListener">
+      <tag name="kernel.event_subscriber"/>
+    </service>
     <service id="http_kernel" class="Symfony\Component\HttpKernel\HttpKernel">
       <argument type="service" id="debug.event_dispatcher"/>
       <argument type="service" id="debug.controller_resolver"/>
@@ -652,7 +664,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/Resources</argument>
+                <argument>/Users/thinky/code/justask/app/Resources</argument>
               </service>
             </argument>
             <argument type="service" id="templating.locator"/>
@@ -685,7 +697,7 @@
               <service class="Symfony\Bundle\FrameworkBundle\CacheWarmer\TemplateFinder" public="false">
                 <argument type="service" id="kernel"/>
                 <argument type="service" id="templating.filename_parser"/>
-                <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/Resources</argument>
+                <argument>/Users/thinky/code/justask/app/Resources</argument>
               </service>
             </argument>
             <argument type="collection"/>
@@ -698,7 +710,7 @@
             <argument type="service">
               <service class="Symfony\Bundle\TwigBundle\TemplateIterator" public="false">
                 <argument type="service" id="kernel"/>
-                <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app</argument>
+                <argument>/Users/thinky/code/justask/app</argument>
                 <argument type="collection"/>
               </service>
             </argument>
@@ -730,10 +742,10 @@
               <argument type="service">
                 <service class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
                   <tag name="cache.pool"/>
-                  <argument>z7tTQl2TZA</argument>
-                  <argument></argument>
-                  <argument>4gdnRsukM2J996nHdzcx5g</argument>
-                  <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/pools</argument>
+                  <argument>7y7055heYd</argument>
+                  <argument>0</argument>
+                  <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+                  <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
                 </service>
@@ -743,10 +755,10 @@
               <argument type="service">
                 <service class="Symfony\Component\Cache\Adapter\AdapterInterface" public="false">
                   <tag name="cache.pool"/>
-                  <argument>1DpA6OkHzb</argument>
-                  <argument></argument>
-                  <argument>4gdnRsukM2J996nHdzcx5g</argument>
-                  <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/pools</argument>
+                  <argument>aWRAfBeuBN</argument>
+                  <argument>0</argument>
+                  <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+                  <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
                 </service>
@@ -764,7 +776,7 @@
     <service id="filesystem" class="Symfony\Component\Filesystem\Filesystem"/>
     <service id="file_locator" class="Symfony\Component\HttpKernel\Config\FileLocator">
       <argument type="service" id="kernel"/>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/Resources</argument>
+      <argument>/Users/thinky/code/justask/app/Resources</argument>
     </service>
     <service id="uri_signer" class="Symfony\Component\HttpKernel\UriSigner">
       <argument>ThisTokenIsNotSoSecretChangeIt</argument>
@@ -881,335 +893,337 @@
         </argument>
       </argument>
       <argument type="collection">
-        <argument key="cache_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/translations</argument>
+        <argument key="cache_dir">/Users/thinky/code/justask/var/cache/dev/translations</argument>
         <argument key="debug">true</argument>
         <argument key="resource_files" type="collection">
           <argument key="af" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.af.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.af.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.af.yml</argument>
           </argument>
           <argument key="ar" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ar.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ar.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ar.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ar.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ar.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ar.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ar.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ar.yml</argument>
           </argument>
           <argument key="az" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.az.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.az.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.az.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.az.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.az.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.az.xlf</argument>
           </argument>
           <argument key="bg" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.bg.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.bg.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.bg.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.bg.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.bg.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.bg.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.bg.yml</argument>
           </argument>
           <argument key="ca" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ca.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ca.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ca.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ca.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ca.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ca.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ca.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ca.yml</argument>
           </argument>
           <argument key="cs" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.cs.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.cs.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.cs.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cs.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.cs.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.cs.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.cs.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.cs.yml</argument>
           </argument>
           <argument key="cy" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cy.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.cy.xlf</argument>
           </argument>
           <argument key="da" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.da.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.da.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.da.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.da.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.da.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.da.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.da.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.da.yml</argument>
           </argument>
           <argument key="de" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.de.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.de.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.de.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.de.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.de.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.de.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.de.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.de.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.de.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.de.yml</argument>
           </argument>
           <argument key="el" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.el.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.el.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.el.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.el.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.el.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.el.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.el.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.el.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.el.yml</argument>
           </argument>
           <argument key="en" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.en.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.en.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.en.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.en.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.en.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.en.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.en.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.en.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.en.yml</argument>
           </argument>
           <argument key="es" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.es.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.es.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.es.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.es.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.es.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.es.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.es.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.es.yml</argument>
           </argument>
           <argument key="et" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.et.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.et.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.et.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.et.yml</argument>
           </argument>
           <argument key="eu" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.eu.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.eu.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.eu.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.eu.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.eu.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.eu.yml</argument>
           </argument>
           <argument key="fa" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fa.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fa.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fa.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.fa.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fa.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fa.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fa.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fa.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fa.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.fa.yml</argument>
           </argument>
           <argument key="fi" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fi.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fi.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fi.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fi.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fi.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fi.yml</argument>
           </argument>
           <argument key="fr" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.fr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.fr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.fr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.fr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.fr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.fr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.fr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.fr.yml</argument>
           </argument>
           <argument key="gl" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.gl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.gl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.gl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.gl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.gl.xlf</argument>
           </argument>
           <argument key="he" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.he.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.he.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.he.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.he.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.he.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.he.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.he.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.he.yml</argument>
           </argument>
           <argument key="hr" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.hr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hr.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hr.yml</argument>
           </argument>
           <argument key="hu" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.hu.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hu.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hu.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.hu.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hu.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hu.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.hu.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.hu.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.hu.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.hu.yml</argument>
           </argument>
           <argument key="hy" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.hy.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.hy.xlf</argument>
           </argument>
           <argument key="id" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.id.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.id.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.id.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.id.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.id.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.id.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.id.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.id.yml</argument>
           </argument>
           <argument key="it" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.it.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.it.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.it.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.it.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.it.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.it.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.it.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.it.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.it.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.it.yml</argument>
           </argument>
           <argument key="ja" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ja.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ja.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ja.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ja.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ja.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ja.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ja.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ja.yml</argument>
           </argument>
           <argument key="lb" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.lb.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lb.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lb.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lb.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lb.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lb.yml</argument>
           </argument>
           <argument key="lt" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.lt.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lt.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lt.yml</argument>
-          </argument>
-          <argument key="mn" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf</argument>
-          </argument>
-          <argument key="nl" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.nl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nl.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nl.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.nl.yml</argument>
-          </argument>
-          <argument key="nn" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
-          </argument>
-          <argument key="no" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.no.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.no.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.no.xlf</argument>
-          </argument>
-          <argument key="pl" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pl.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pl.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.pl.yml</argument>
-          </argument>
-          <argument key="pt" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt.yml</argument>
-          </argument>
-          <argument key="pt_BR" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_BR.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt_BR.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt_BR.yml</argument>
-          </argument>
-          <argument key="ro" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ro.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ro.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ro.yml</argument>
-          </argument>
-          <argument key="ru" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ru.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ru.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ru.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.ru.yml</argument>
-          </argument>
-          <argument key="sk" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sk.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sk.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sk.yml</argument>
-          </argument>
-          <argument key="sl" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sl.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sl.yml</argument>
-          </argument>
-          <argument key="sq" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sq.xlf</argument>
-          </argument>
-          <argument key="sr_Cyrl" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Cyrl.xlf</argument>
-          </argument>
-          <argument key="sr_Latn" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sr_Latn.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sr_Latn.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sr_Latn.yml</argument>
-          </argument>
-          <argument key="sv" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.sv.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sv.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sv.yml</argument>
-          </argument>
-          <argument key="th" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.th.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.th.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.th.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.th.yml</argument>
-          </argument>
-          <argument key="tr" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.tr.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.tr.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.tr.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.tr.yml</argument>
-          </argument>
-          <argument key="uk" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.uk.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.uk.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.uk.yml</argument>
-          </argument>
-          <argument key="vi" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.vi.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.vi.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.vi.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.vi.yml</argument>
-          </argument>
-          <argument key="zh_CN" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.zh_CN.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.zh_CN.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.zh_CN.yml</argument>
-          </argument>
-          <argument key="zh_TW" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lt.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lt.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lt.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lt.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lt.yml</argument>
           </argument>
           <argument key="lv" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lv.xlf</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lv.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lv.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.lv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.lv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.lv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.lv.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.lv.yml</argument>
+          </argument>
+          <argument key="mn" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.mn.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.mn.xlf</argument>
+          </argument>
+          <argument key="nl" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.nl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.nl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nl.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nl.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.nl.yml</argument>
+          </argument>
+          <argument key="nn" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.nn.xlf</argument>
+          </argument>
+          <argument key="no" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.no.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.no.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.no.xlf</argument>
+          </argument>
+          <argument key="pl" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pl.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pl.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.pl.yml</argument>
+          </argument>
+          <argument key="pt" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt.yml</argument>
+          </argument>
+          <argument key="pt_BR" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.pt_BR.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_BR.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.pt_BR.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.pt_BR.yml</argument>
+          </argument>
+          <argument key="ro" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ro.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ro.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ro.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ro.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ro.yml</argument>
+          </argument>
+          <argument key="ru" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.ru.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.ru.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ru.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ru.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ru.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.ru.yml</argument>
+          </argument>
+          <argument key="sk" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sk.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sk.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sk.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sk.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sk.yml</argument>
+          </argument>
+          <argument key="sl" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sl.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sl.yml</argument>
+          </argument>
+          <argument key="sq" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sq.xlf</argument>
+          </argument>
+          <argument key="sr_Cyrl" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Cyrl.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sr_Cyrl.xlf</argument>
+          </argument>
+          <argument key="sr_Latn" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sr_Latn.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sr_Latn.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sr_Latn.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sr_Latn.yml</argument>
+          </argument>
+          <argument key="sv" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.sv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.sv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.sv.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.sv.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.sv.yml</argument>
+          </argument>
+          <argument key="th" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.th.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.th.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.th.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.th.yml</argument>
+          </argument>
+          <argument key="tr" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.tr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.tr.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.tr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.tr.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.tr.yml</argument>
+          </argument>
+          <argument key="uk" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.uk.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.uk.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.uk.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.uk.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.uk.yml</argument>
+          </argument>
+          <argument key="vi" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.vi.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.vi.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.vi.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.vi.yml</argument>
+          </argument>
+          <argument key="zh_CN" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/translations/validators.zh_CN.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.zh_CN.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.zh_CN.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.zh_CN.yml</argument>
+          </argument>
+          <argument key="zh_TW" type="collection">
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Validator/Resources/translations/validators.zh_TW.xlf</argument>
           </argument>
           <argument key="pt_PT" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.pt_PT.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.pt_PT.xlf</argument>
           </argument>
           <argument key="ua" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Exception/../Resources/translations/security.ua.xlf</argument>
+            <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Security/Core/Resources/translations/security.ua.xlf</argument>
           </argument>
           <argument key="ky" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ky.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ky.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.ky.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.ky.yml</argument>
           </argument>
           <argument key="nb" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nb.yml</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nb.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/FOSUserBundle.nb.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/translations/validators.nb.yml</argument>
           </argument>
           <argument key="zh" type="collection">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.zh.yml</argument>
+            <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/translations/HWIOAuthBundle.zh.yml</argument>
           </argument>
         </argument>
       </argument>
@@ -1398,19 +1412,19 @@
     </service>
     <service id="cache.app" class="Symfony\Component\Cache\Adapter\FilesystemAdapter">
       <tag name="cache.pool"/>
-      <argument>sBDjVYjX2d</argument>
-      <argument></argument>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/pools</argument>
+      <argument>ItK6dbkOj2</argument>
+      <argument>0</argument>
+      <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
       <call method="setLogger">
         <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       </call>
     </service>
     <service id="cache.system" class="Symfony\Component\Cache\Adapter\AdapterInterface">
       <tag name="cache.pool"/>
-      <argument>Kg9gqokRm2</argument>
-      <argument></argument>
-      <argument>4gdnRsukM2J996nHdzcx5g</argument>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/pools</argument>
+      <argument>v4x1eIBgYn</argument>
+      <argument>0</argument>
+      <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+      <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
     </service>
@@ -1471,6 +1485,7 @@
               <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="collection">
                 <argument>form.type_extension.form.http_foundation</argument>
                 <argument>form.type_extension.form.validator</argument>
+                <argument>form.type_extension.upload.validator</argument>
                 <argument>form.type_extension.csrf</argument>
                 <argument>form.type_extension.form.data_collector</argument>
               </argument>
@@ -1479,6 +1494,12 @@
               </argument>
               <argument key="Symfony\Component\Form\Extension\Core\Type\SubmitType" type="collection">
                 <argument>form.type_extension.submit.validator</argument>
+              </argument>
+              <argument key="Symfony\Component\Form\Extension\Core\Type\DateType" type="collection">
+                <argument>carbon.form_extension.carbon_date</argument>
+              </argument>
+              <argument key="Symfony\Component\Form\Extension\Core\Type\DateTimeType" type="collection">
+                <argument>carbon.form_extension.carbon_datetime</argument>
               </argument>
             </argument>
             <argument type="collection">
@@ -1608,13 +1629,12 @@
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service">
         <service class="Symfony\Component\Form\Extension\HttpFoundation\HttpFoundationRequestHandler" public="false">
-          <argument type="service">
-            <service class="Symfony\Component\Form\Util\ServerParams" public="false">
-              <argument type="service" id="request_stack"/>
-            </service>
-          </argument>
+          <argument type="service" id="form.server_params"/>
         </service>
       </argument>
+    </service>
+    <service id="form.server_params" class="Symfony\Component\Form\Util\ServerParams" public="false">
+      <argument type="service" id="request_stack"/>
     </service>
     <service id="form.type_extension.form.validator" class="Symfony\Component\Form\Extension\Validator\Type\FormTypeValidatorExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
@@ -1626,6 +1646,11 @@
     <service id="form.type_extension.submit.validator" class="Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidatorExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\SubmitType" extended-type="Symfony\Component\Form\Extension\Core\Type\SubmitType"/>
     </service>
+    <service id="form.type_extension.upload.validator" class="Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension">
+      <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
+      <argument type="service" id="translator"/>
+      <argument>validators</argument>
+    </service>
     <service id="form.type_extension.csrf" class="Symfony\Component\Form\Extension\Csrf\Type\FormTypeCsrfExtension">
       <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\FormType" extended-type="Symfony\Component\Form\Extension\Core\Type\FormType"/>
       <argument type="service" id="security.csrf.token_manager"/>
@@ -1633,6 +1658,7 @@
       <argument>_token</argument>
       <argument type="service" id="translator.default"/>
       <argument>validators</argument>
+      <argument type="service" id="form.server_params"/>
     </service>
     <service id="security.csrf.token_manager" class="Symfony\Component\Security\Csrf\CsrfTokenManager">
       <argument type="service">
@@ -1665,7 +1691,7 @@
     <service id="templating.filename_parser" class="Symfony\Bundle\FrameworkBundle\Templating\TemplateFilenameParser"/>
     <service id="templating.locator" class="Symfony\Bundle\FrameworkBundle\Templating\Loader\TemplateLocator" public="false">
       <argument type="service" id="file_locator"/>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev</argument>
+      <argument>/Users/thinky/code/justask/var/cache/dev</argument>
     </service>
     <service id="validator" class="Symfony\Component\Validator\Validator\ValidatorInterface">
       <factory service="validator.builder" method="getValidator"/>
@@ -1695,8 +1721,8 @@
       </call>
       <call method="addXmlMappings">
         <argument type="collection">
-          <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
-          <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
+          <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Component/Form/Resources/config/validation.xml</argument>
+          <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/config/validation.xml</argument>
         </argument>
       </call>
       <call method="enableAnnotationMapping">
@@ -1711,13 +1737,13 @@
           <argument type="service">
             <service class="FOS\UserBundle\Validator\Initializer" public="false">
               <tag name="validator.initializer"/>
-              <argument type="service" id="fos_user.user_manager"/>
+              <argument type="service" id="fos_user.util.canonical_fields_updater"/>
             </service>
           </argument>
         </argument>
       </call>
       <call method="addXmlMapping">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
+        <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/DependencyInjection/Compiler/../../Resources/config/storage-validation/orm.xml</argument>
       </call>
       <factory class="Symfony\Component\Validator\Validation" method="createValidatorBuilder"/>
     </service>
@@ -1737,7 +1763,7 @@
       <tag name="monolog.logger" channel="profiler"/>
       <argument type="service">
         <service class="Symfony\Component\HttpKernel\Profiler\FileProfilerStorage" public="false">
-          <argument>file:/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/profiler</argument>
+          <argument>file:/Users/thinky/code/justask/var/cache/dev/profiler</argument>
         </service>
       </argument>
       <argument type="service" id="monolog.logger.profiler" on-invalid="null"/>
@@ -2043,6 +2069,10 @@
         <argument>Symfony\Component\HttpKernel\EventListener\TranslatorListener</argument>
       </call>
       <call method="addSubscriberService">
+        <argument>validate_request_listener</argument>
+        <argument>Symfony\Component\HttpKernel\EventListener\ValidateRequestListener</argument>
+      </call>
+      <call method="addSubscriberService">
         <argument>session_listener</argument>
         <argument>Symfony\Bundle\FrameworkBundle\EventListener\SessionListener</argument>
       </call>
@@ -2140,9 +2170,9 @@
       </call>
     </service>
     <service id="debug.controller_resolver" class="Symfony\Component\HttpKernel\Controller\TraceableControllerResolver">
+      <tag name="monolog.logger" channel="request"/>
       <argument type="service">
         <service class="Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver" public="false">
-          <tag name="monolog.logger" channel="request"/>
           <argument type="service" id="service_container"/>
           <argument type="service" id="controller_name_converter"/>
           <argument type="service" id="monolog.logger.request" on-invalid="ignore"/>
@@ -2210,7 +2240,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>575c24a4659947.36546045</argument>
+            <argument>58513284f37211.79805033</argument>
           </service>
         </argument>
       </argument>
@@ -2594,7 +2624,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>575c24a4659947.36546045</argument>
+            <argument>58513284f37211.79805033</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -2701,8 +2731,8 @@
         <argument key="form_themes" type="collection">
           <argument>form_div_layout.html.twig</argument>
         </argument>
-        <argument key="autoescape">filename</argument>
-        <argument key="cache">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/twig</argument>
+        <argument key="autoescape">name</argument>
+        <argument key="cache">/Users/thinky/code/justask/var/cache/dev/twig</argument>
         <argument key="charset">UTF-8</argument>
         <argument key="paths" type="collection"/>
         <argument key="date" type="collection">
@@ -2772,7 +2802,7 @@
           <service class="Symfony\Bridge\Twig\Extension\CodeExtension" public="false">
             <tag name="twig.extension"/>
             <argument>null</argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app</argument>
+            <argument>/Users/thinky/code/justask/app</argument>
             <argument>UTF-8</argument>
           </service>
         </argument>
@@ -2951,11 +2981,15 @@
       <argument type="service" id="http_kernel"/>
       <argument>twig.controller.exception:showAction</argument>
     </service>
+    <service id="monolog.processor.psr_log_message" class="Monolog\Processor\PsrLogMessageProcessor" public="false"/>
     <service id="monolog.handler.main" class="Monolog\Handler\StreamHandler">
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/logs/dev.log</argument>
+      <argument>/Users/thinky/code/justask/var/logs/dev.log</argument>
       <argument>100</argument>
       <argument>true</argument>
       <argument>null</argument>
+      <call method="pushProcessor">
+        <argument type="service" id="monolog.processor.psr_log_message"/>
+      </call>
     </service>
     <service id="monolog.handler.console" class="Symfony\Bridge\Monolog\Handler\ConsoleHandler">
       <tag name="kernel.event_subscriber"/>
@@ -2967,6 +3001,9 @@
         <argument key="32">300</argument>
         <argument key="256">100</argument>
       </argument>
+      <call method="pushProcessor">
+        <argument type="service" id="monolog.processor.psr_log_message"/>
+      </call>
     </service>
     <service id="monolog.handler.console_very_verbose" class="Symfony\Bridge\Monolog\Handler\ConsoleHandler">
       <tag name="kernel.event_subscriber"/>
@@ -2978,6 +3015,9 @@
         <argument key="256">100</argument>
         <argument key="32">300</argument>
       </argument>
+      <call method="pushProcessor">
+        <argument type="service" id="monolog.processor.psr_log_message"/>
+      </call>
     </service>
     <service id="swiftmailer.email_sender.listener" class="Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener">
       <tag name="kernel.event_subscriber"/>
@@ -3014,7 +3054,7 @@
             </argument>
             <argument type="service">
               <service class="Assetic\Cache\ConfigCache" public="false">
-                <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/assetic/config</argument>
+                <argument>/Users/thinky/code/justask/var/cache/dev/assetic/config</argument>
               </service>
             </argument>
             <argument>true</argument>
@@ -3028,7 +3068,7 @@
             <tag name="assetic.formula_resource" loader="twig"/>
             <argument type="service" id="templating.loader"/>
             <argument></argument>
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/Resources/views</argument>
+            <argument>/Users/thinky/code/justask/app/Resources/views</argument>
             <argument>/\.[^.]+\.twig$/</argument>
           </service>
         </argument>
@@ -3043,7 +3083,7 @@
           <factory service="service_container" method="getParameterBag"/>
         </service>
       </argument>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/../web</argument>
+      <argument>/Users/thinky/code/justask/app/../web</argument>
       <argument>true</argument>
       <call method="addWorker">
         <argument type="service">
@@ -3060,7 +3100,7 @@
       <argument type="service" id="assetic.asset_manager"/>
       <argument type="service">
         <service class="Assetic\Cache\FilesystemCache" public="false">
-          <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/assetic/assets</argument>
+          <argument>/Users/thinky/code/justask/var/cache/dev/assetic/assets</argument>
         </service>
       </argument>
       <argument>false</argument>
@@ -3088,10 +3128,10 @@
       <argument type="collection">
         <argument key="driver">pdo_mysql</argument>
         <argument key="host">127.0.0.1</argument>
-        <argument key="port">8889</argument>
+        <argument key="port">null</argument>
         <argument key="dbname">question_answer</argument>
         <argument key="user">root</argument>
-        <argument key="password">root</argument>
+        <argument key="password">null</argument>
         <argument key="charset">UTF8</argument>
         <argument key="driverOptions" type="collection"/>
         <argument key="defaultTableOptions" type="collection"/>
@@ -3145,7 +3185,8 @@
             <argument type="service">
               <service class="FOS\UserBundle\Doctrine\UserListener" public="false">
                 <tag name="doctrine.event_subscriber"/>
-                <argument type="service" id="service_container"/>
+                <argument type="service" id="fos_user.util.password_updater"/>
+                <argument type="service" id="fos_user.util.canonical_fields_updater"/>
               </service>
             </argument>
           </call>
@@ -3178,17 +3219,17 @@
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_metadata_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_84dc615c252851d3ec872fa38d6493d5c1e92b8e4af5a9eb20012ad4322548db</argument>
+        <argument>sf2orm_default_e22739b363622e5241372267eaa8efe3d374d18dd34e4e937f76daef5a1d6652</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_result_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_84dc615c252851d3ec872fa38d6493d5c1e92b8e4af5a9eb20012ad4322548db</argument>
+        <argument>sf2orm_default_e22739b363622e5241372267eaa8efe3d374d18dd34e4e937f76daef5a1d6652</argument>
       </call>
     </service>
     <service id="doctrine_cache.providers.doctrine.orm.default_query_cache" class="Doctrine\Common\Cache\ArrayCache">
       <call method="setNamespace">
-        <argument>sf2orm_default_84dc615c252851d3ec872fa38d6493d5c1e92b8e4af5a9eb20012ad4322548db</argument>
+        <argument>sf2orm_default_e22739b363622e5241372267eaa8efe3d374d18dd34e4e937f76daef5a1d6652</argument>
       </call>
     </service>
     <service id="doctrine.orm.default_entity_listener_resolver" class="Doctrine\ORM\Mapping\DefaultEntityListenerResolver"/>
@@ -3199,7 +3240,7 @@
       <argument type="collection"/>
       <argument type="collection"/>
     </service>
-    <service id="doctrine.orm.default_entity_manager" class="Doctrine\ORM\EntityManager">
+    <service id="doctrine.orm.default_entity_manager" class="Doctrine\ORM\EntityManager" lazy="true">
       <argument type="service" id="doctrine.dbal.default_connection"/>
       <argument type="service">
         <service class="Doctrine\ORM\Configuration" public="false">
@@ -3225,7 +3266,7 @@
                     <service class="Doctrine\ORM\Mapping\Driver\AnnotationDriver" public="false">
                       <argument type="service" id="annotation_reader"/>
                       <argument type="collection">
-                        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/src/AppBundle/Entity</argument>
+                        <argument>/Users/thinky/code/justask/src/AppBundle/Entity</argument>
                       </argument>
                     </service>
                   </argument>
@@ -3237,7 +3278,7 @@
                       <argument type="service">
                         <service class="Doctrine\Common\Persistence\Mapping\Driver\SymfonyFileLocator">
                           <argument type="collection">
-                            <argument key="/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
+                            <argument key="/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/config/doctrine-mapping">FOS\UserBundle\Model</argument>
                           </argument>
                           <argument>.orm.xml</argument>
                         </service>
@@ -3250,7 +3291,7 @@
             </argument>
           </call>
           <call method="setProxyDir">
-            <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/doctrine/orm/Proxies</argument>
+            <argument>/Users/thinky/code/justask/var/cache/dev/doctrine/orm/Proxies</argument>
           </call>
           <call method="setProxyNamespace">
             <argument>Proxies</argument>
@@ -3359,13 +3400,23 @@
       <argument type="service" id="security.token_storage"/>
       <argument type="service" id="security.user_checker.main"/>
       <argument type="service" id="security.authentication.session_strategy"/>
-      <argument type="service" id="service_container"/>
+      <argument type="service" id="request_stack"/>
+      <argument>null</argument>
     </service>
     <service id="fos_user.user_provider.username" class="FOS\UserBundle\Security\UserProvider" public="false">
       <argument type="service" id="fos_user.user_manager"/>
     </service>
     <service id="fos_user.util.user_manipulator" class="FOS\UserBundle\Util\UserManipulator">
       <argument type="service" id="fos_user.user_manager"/>
+      <argument type="service" id="debug.event_dispatcher"/>
+      <argument type="service" id="request_stack"/>
+    </service>
+    <service id="fos_user.util.password_updater" class="FOS\UserBundle\Util\PasswordUpdater" public="false">
+      <argument type="service" id="security.encoder_factory"/>
+    </service>
+    <service id="fos_user.util.canonical_fields_updater" class="FOS\UserBundle\Util\CanonicalFieldsUpdater" public="false">
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+      <argument type="service" id="fos_user.util.email_canonicalizer"/>
     </service>
     <service id="fos_user.listener.authentication" class="FOS\UserBundle\EventListener\AuthenticationListener">
       <tag name="kernel.event_subscriber"/>
@@ -3460,6 +3511,12 @@
     </service>
     <service id="carbon.converter.carbon" class="LightSuner\CarbonBundle\Request\ParamConverter\CarbonParamConverter">
       <tag name="request.param_converter" converter="carbon"/>
+    </service>
+    <service id="carbon.form_extension.carbon_date" class="LightSuner\CarbonBundle\Form\Extension\CarbonDateExtension">
+      <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateType"/>
+    </service>
+    <service id="carbon.form_extension.carbon_datetime" class="LightSuner\CarbonBundle\Form\Extension\CarbonDateTimeExtension">
+      <tag name="form.type_extension" extended_type="Symfony\Component\Form\Extension\Core\Type\DateTimeType"/>
     </service>
     <service id="hwi_oauth.security.oauth_utils" class="HWI\Bundle\OAuthBundle\Security\OAuthUtils">
       <argument type="service" id="security.http_utils"/>
@@ -3574,7 +3631,7 @@
     <service id="debug.dump_listener" class="Symfony\Component\HttpKernel\EventListener\DumpListener">
       <tag name="kernel.event_subscriber"/>
       <argument type="service" id="var_dumper.cloner"/>
-      <argument type="service" id="data_collector.dump"/>
+      <argument type="service" id="var_dumper.cli_dumper"/>
     </service>
     <service id="var_dumper.cloner" class="Symfony\Component\VarDumper\Cloner\VarCloner">
       <call method="setMaxItems">
@@ -3687,7 +3744,7 @@
     <service id="faker.generator" class="Faker\Factory">
       <argument>en_US</argument>
       <call method="seed">
-        <argument>236877100</argument>
+        <argument>1430457983</argument>
       </call>
       <factory class="Faker\Factory" method="create"/>
     </service>
@@ -3888,8 +3945,9 @@
       <argument>100</argument>
       <argument>true</argument>
     </service>
+    <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/sessions</argument>
+      <argument>/Users/thinky/code/justask/var/cache/dev/sessions</argument>
       <argument>MOCKSESSID</argument>
       <argument type="service" id="session.storage.metadata_bag"/>
     </service>
@@ -3912,25 +3970,21 @@
         </service>
       </argument>
     </service>
-    <service id="cache.default_redis_provider" class="Redis">
-      <argument>redis://localhost</argument>
-      <factory class="Symfony\Component\Cache\Adapter\RedisAdapter" method="createConnection"/>
-    </service>
     <service id="router" class="Symfony\Bundle\FrameworkBundle\Routing\Router">
       <tag name="monolog.logger" channel="router"/>
       <argument type="service" id="service_container"/>
-      <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/assetic/routing.yml</argument>
+      <argument>/Users/thinky/code/justask/var/cache/dev/assetic/routing.yml</argument>
       <argument type="collection">
-        <argument key="cache_dir">/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev</argument>
+        <argument key="cache_dir">/Users/thinky/code/justask/var/cache/dev</argument>
         <argument key="debug">true</argument>
         <argument key="generator_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_base_class">Symfony\Component\Routing\Generator\UrlGenerator</argument>
         <argument key="generator_dumper_class">Symfony\Component\Routing\Generator\Dumper\PhpGeneratorDumper</argument>
-        <argument key="generator_cache_class">appDevUrlGenerator</argument>
+        <argument key="generator_cache_class">appDevDebugProjectContainerUrlGenerator</argument>
         <argument key="matcher_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</argument>
         <argument key="matcher_base_class">Symfony\Bundle\FrameworkBundle\Routing\RedirectableUrlMatcher</argument>
         <argument key="matcher_dumper_class">Symfony\Component\Routing\Matcher\Dumper\PhpMatcherDumper</argument>
-        <argument key="matcher_cache_class">appDevUrlMatcher</argument>
+        <argument key="matcher_cache_class">appDevDebugProjectContainerUrlMatcher</argument>
         <argument key="strict_requirements">true</argument>
         <argument key="resource_type">yaml</argument>
       </argument>
@@ -3948,7 +4002,7 @@
       </argument>
       <argument type="service">
         <service class="Doctrine\Common\Cache\FilesystemCache" public="false">
-          <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/var/cache/dev/annotations</argument>
+          <argument>/Users/thinky/code/justask/var/cache/dev/annotations</argument>
         </service>
       </argument>
       <argument>true</argument>
@@ -3973,50 +4027,50 @@
       <argument type="service" id="templating.locator"/>
       <argument type="service" id="templating.name_parser"/>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bundle/FrameworkBundle/Resources/views</argument>
         <argument>Framework</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bundle/SecurityBundle/Resources/views</argument>
         <argument>Security</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bundle/TwigBundle/Resources/views</argument>
         <argument>Twig</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/swiftmailer-bundle/Resources/views</argument>
         <argument>Swiftmailer</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/doctrine/doctrine-bundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/doctrine/doctrine-bundle/Resources/views</argument>
         <argument>Doctrine</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/src/AppBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/src/AppBundle/Resources/views</argument>
         <argument>App</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/friendsofsymfony/user-bundle/Resources/views</argument>
         <argument>FOSUser</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/hwi/oauth-bundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/hwi/oauth-bundle/Resources/views</argument>
         <argument>HWIOAuth</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bundle/DebugBundle/Resources/views</argument>
         <argument>Debug</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bundle/WebProfilerBundle/Resources/views</argument>
         <argument>WebProfiler</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/app/Resources/views</argument>
+        <argument>/Users/thinky/code/justask/app/Resources/views</argument>
       </call>
       <call method="addPath">
-        <argument>/Users/thinky/Dev/WebCode/QuestionAnswerApp/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
+        <argument>/Users/thinky/code/justask/vendor/symfony/symfony/src/Symfony/Bridge/Twig/Resources/views/Form</argument>
       </call>
     </service>
     <service id="logger" class="Symfony\Bridge\Monolog\Logger">
@@ -4052,6 +4106,12 @@
         </service>
       </argument>
       <argument type="service" id="swiftmailer.mailer.default.transport.eventdispatcher"/>
+      <configurator method="configure">
+        <service class="Symfony\Bundle\SwiftmailerBundle\DependencyInjection\SmtpTransportConfigurator" public="false">
+          <argument>null</argument>
+          <argument type="service" id="router.request_context" on-invalid="null"/>
+        </service>
+      </configurator>
     </service>
     <service id="fos_user.mailer" class="FOS\UserBundle\Mailer\Mailer">
       <argument type="service" id="swiftmailer.mailer.default"/>
@@ -4071,13 +4131,10 @@
       </argument>
     </service>
     <service id="fos_user.util.email_canonicalizer" class="FOS\UserBundle\Util\Canonicalizer"/>
-    <service id="fos_user.util.token_generator" class="FOS\UserBundle\Util\TokenGenerator">
-      <argument type="service" id="logger" on-invalid="ignore"/>
-    </service>
-    <service id="fos_user.user_manager" class="FOS\UserBundle\Doctrine\UserManager">
-      <argument type="service" id="security.encoder_factory"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
-      <argument type="service" id="fos_user.util.email_canonicalizer"/>
+    <service id="fos_user.util.token_generator" class="FOS\UserBundle\Util\TokenGenerator"/>
+    <service id="fos_user.user_manager" class="FOS\UserBundle\Doctrine\UserManager" lazy="true">
+      <argument type="service" id="fos_user.util.password_updater"/>
+      <argument type="service" id="fos_user.util.canonical_fields_updater"/>
       <argument type="service">
         <service class="Doctrine\Common\Persistence\ObjectManager" public="false">
           <argument>null</argument>
