@@ -47,14 +47,6 @@ class RegistrationController extends BaseController
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-
-            if(!$this->validateRecaptcha($request->get('g-recaptcha-response'))) {
-                $this->container->get('thinky.appbundle.sweet_alert')->error('Stala se chyba', 'Registrace se bohužel nepovedla. Zkuste to prosím znova.');
-                return $this->render('FOSUserBundle:Registration:register.html.twig', array(
-                    'form' => $form->createView(),
-                ));
-            }
-
             $event = new FormEvent($form, $request);
             $dispatcher->dispatch(FOSUserEvents::REGISTRATION_SUCCESS, $event);
 
@@ -140,17 +132,5 @@ class RegistrationController extends BaseController
 
         $this->get('thinky.appbundle.sweet_alert')->success('Vítej na palubě !', 'Účet  byl úspěšně aktivován. Díky za registraci!');
         return $this->redirectToRoute('home');
-    }
-
-    private function validateRecaptcha($response)
-    {
-        if($response == '') return false;
-
-        $rest = $this->container->get('ci.restclient');
-
-        $content = $rest->post('https://www.google.com/recaptcha/api/siteverify?secret=6Ld0fxETAAAAAKnUGx0DSqnU0yTv7y03DxyVUYyM&response='.$response, '')->getContent();
-        $result = json_encode($content);
-
-        return $result;
     }
 }

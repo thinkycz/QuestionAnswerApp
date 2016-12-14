@@ -236,9 +236,9 @@
     <parameter key="assetic.write_to">/Users/thinky/code/justask/app/../web</parameter>
     <parameter key="assetic.variables" type="collection"/>
     <parameter key="assetic.java.bin">/usr/bin/java</parameter>
-    <parameter key="assetic.node.bin">/usr/bin/node</parameter>
+    <parameter key="assetic.node.bin">/usr/local/bin/node</parameter>
     <parameter key="assetic.ruby.bin">/usr/bin/ruby</parameter>
-    <parameter key="assetic.sass.bin">/usr/bin/sass</parameter>
+    <parameter key="assetic.sass.bin">/usr/local/bin/sass</parameter>
     <parameter key="assetic.reactjsx.bin">/usr/bin/jsx</parameter>
     <parameter key="assetic.filter.cssrewrite.class">Assetic\Filter\CssRewriteFilter</parameter>
     <parameter key="assetic.twig_extension.functions" type="collection"/>
@@ -744,7 +744,7 @@
                   <tag name="cache.pool"/>
                   <argument>7y7055heYd</argument>
                   <argument>0</argument>
-                  <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+                  <argument>MZ3Ri0R8VwzHHtdNxTwtNK</argument>
                   <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -757,7 +757,7 @@
                   <tag name="cache.pool"/>
                   <argument>aWRAfBeuBN</argument>
                   <argument>0</argument>
-                  <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+                  <argument>MZ3Ri0R8VwzHHtdNxTwtNK</argument>
                   <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
                   <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
                   <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -1423,7 +1423,7 @@
       <tag name="cache.pool"/>
       <argument>v4x1eIBgYn</argument>
       <argument>0</argument>
-      <argument>KlHLL4Os1aUca+fDiapL5O</argument>
+      <argument>MZ3Ri0R8VwzHHtdNxTwtNK</argument>
       <argument>/Users/thinky/code/justask/var/cache/dev/pools</argument>
       <argument type="service" id="monolog.logger.cache" on-invalid="ignore"/>
       <factory class="Symfony\Component\Cache\Adapter\AbstractAdapter" method="createSystemCache"/>
@@ -2240,7 +2240,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>58513284f37211.79805033</argument>
+            <argument>585135217c0a75.95936915</argument>
           </service>
         </argument>
       </argument>
@@ -2624,7 +2624,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.token_storage"/>
-            <argument>58513284f37211.79805033</argument>
+            <argument>585135217c0a75.95936915</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
             <argument type="service" id="security.authentication.manager"/>
           </service>
@@ -3744,7 +3744,7 @@
     <service id="faker.generator" class="Faker\Factory">
       <argument>en_US</argument>
       <call method="seed">
-        <argument>1430457983</argument>
+        <argument>2044654848</argument>
       </call>
       <factory class="Faker\Factory" method="create"/>
     </service>
@@ -3817,9 +3817,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.translation" class="Symfony\Bridge\Monolog\Logger">
       <argument>translation</argument>
@@ -3828,9 +3825,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.cache" class="Symfony\Bridge\Monolog\Logger">
@@ -3841,9 +3835,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.templating" class="Symfony\Bridge\Monolog\Logger">
       <argument>templating</argument>
@@ -3852,9 +3843,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.profiler" class="Symfony\Bridge\Monolog\Logger">
@@ -3865,9 +3853,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.router" class="Symfony\Bridge\Monolog\Logger">
       <argument>router</argument>
@@ -3876,9 +3861,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.php" class="Symfony\Bridge\Monolog\Logger">
@@ -3889,9 +3871,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.event" class="Symfony\Bridge\Monolog\Logger">
       <argument>event</argument>
@@ -3900,9 +3879,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.security" class="Symfony\Bridge\Monolog\Logger">
@@ -3913,9 +3889,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
     </service>
     <service id="monolog.logger.assetic" class="Symfony\Bridge\Monolog\Logger">
       <argument>assetic</argument>
@@ -3924,9 +3897,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
     </service>
     <service id="monolog.logger.doctrine" class="Symfony\Bridge\Monolog\Logger">
@@ -3937,13 +3907,6 @@
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
       </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
-      </call>
-    </service>
-    <service id="monolog.handler.debug" class="Symfony\Bridge\Monolog\Handler\DebugHandler">
-      <argument>100</argument>
-      <argument>true</argument>
     </service>
     <service id="monolog.handler.null_internal" class="Monolog\Handler\NullHandler"/>
     <service id="session.storage.filesystem" class="Symfony\Component\HttpFoundation\Session\Storage\MockFileSessionStorage">
@@ -4083,9 +4046,6 @@
       </call>
       <call method="pushHandler">
         <argument type="service" id="monolog.handler.main"/>
-      </call>
-      <call method="pushHandler">
-        <argument type="service" id="monolog.handler.debug"/>
       </call>
       <autowiring-type>Psr\Log\LoggerInterface</autowiring-type>
     </service>

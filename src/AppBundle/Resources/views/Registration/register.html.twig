@@ -29,9 +29,6 @@
                     <input type="password" id="fos_user_registration_form_plainPassword_second" name="fos_user_registration_form[plainPassword][second]" class="form-control" required>
                     {{ form_errors(form.plainPassword.second) }}
                 </div>
-                <div class="recaptcha">
-                    <div class="g-recaptcha" data-sitekey="6Ld0fxETAAAAAByZ39snquJdqDhgXaXF9UMc3mOe"></div>
-                </div>
                 <div>
                     <input id="_submit" type="submit" value="Zaregistrovat se" class="btn btn-primary sharp form-control" />
                     <button id="_loader" class="btn btn-primary sharp form-control" style="display: none" disabled><span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span> Probíhá registrace...</button>
@@ -44,7 +41,6 @@
 
 {% block javascripts %}
     {{ parent() }}
-    <script src='https://www.google.com/recaptcha/api.js'></script>
     <script>
         $('#registrationForm').submit(function() {
             $('#_submit').hide();
