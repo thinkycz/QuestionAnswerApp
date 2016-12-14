@@ -221,7 +221,8 @@ class AnswersController extends Controller
 
     private function validateInputForm(Request $request)
     {
-        if(!$this->get('form.csrf_provider')->isCsrfTokenValid('storeAnswer', $request->get('csrf_token')))
+        $token = $this->get('security.csrf.token_manager')->getToken($request->get('csrf_token'));
+        if(!$this->get('security.csrf.token_manager')->isTokenValid($token))
         {
             $this->container->get('thinky.appbundle.sweet_alert')->error('Nastala chyba CSRF', 'Bohužel se nám nepodařilo přidat příspěvek.');
             return false;
